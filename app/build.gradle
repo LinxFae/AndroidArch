@@ -34,27 +34,30 @@ android {
     }
 
     buildTypes {
-        debug {
-            //to enable test coverage using jacoco
+        debug {//to enable test coverage using jacoco
             testCoverageEnabled true
         }
-        release {
+        release {//remove unused code and resources
+            shrinkResources true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-    testOptions {
-        //to disable view animations which effect espresso tests
-        animationsDisabled = true
-    }
-
-    dexOptions {
+    dexOptions {//increase java heap
         javaMaxHeapSize "2048M"
     }
 
-    dataBinding {
+    dataBinding {//to enable data binding
         enabled = true
+    }
+
+    testOptions {//to disable view animations which effect espresso tests
+        animationsDisabled = true
+    }
+
+    lintOptions {//to contibue build when there are lint issues
+        abortOnError false
     }
 
     kapt {
