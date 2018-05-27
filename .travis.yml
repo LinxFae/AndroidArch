@@ -42,8 +42,8 @@ before_script:
 
 script:
   - ./gradlew test connectedAndroidTest
-  - ./gradlew build jacocoTestReport lint --stacktrace
-  - ./gradlew lint
+  - ./gradlew build jacocoTestReport --stacktrace
+#  - ./gradlew lint
 
 #upload code coverage to codecov.io
 after_success:
