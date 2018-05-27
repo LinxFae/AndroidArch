@@ -1,6 +1,7 @@
 package com.noisyninja.androidlistpoc.views
 
 import android.support.test.espresso.Espresso
+import android.support.test.espresso.IdlingRegistry
 import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.intent.rule.IntentsTestRule
@@ -9,11 +10,15 @@ import android.support.test.runner.AndroidJUnit4
 import android.view.View
 import android.view.ViewGroup
 import com.codewaves.stickyheadergrid.StickyHeaderGridAdapter
+import com.noisyninja.androidlistpoc.NinjaIdlingResource
 import com.noisyninja.androidlistpoc.R
+import kotlinx.android.synthetic.main.content_main.*
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers
 import org.hamcrest.TypeSafeMatcher
+import org.junit.After
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -28,14 +33,26 @@ class MainActivityNavigationTest : BaseTest() {
     @Rule
     @JvmField
     var mActivityTestRule = IntentsTestRule(MainActivity::class.java)
+    lateinit var idlingResource: NinjaIdlingResource
+
+    @Before
+    fun setup() {
+
+        idlingResource = NinjaIdlingResource(mActivityTestRule.activity.recyclerList, mActivityTestRule.activity.javaClass.simpleName)
+        IdlingRegistry.getInstance().register(idlingResource)
+        //mActivityTestRule.launchActivity(null)
+    }
+
+    @After
+    fun teardown() {
+        IdlingRegistry.getInstance().unregister(idlingResource)
+    }
 
     /**
      * test app navigation
      */
     @Test
     fun mainActivityTest() {
-
-        sleepMedium()
 
         val recyclerView = Espresso.onView(
                 Matchers.allOf(ViewMatchers.withId(R.id.recyclerList)))
