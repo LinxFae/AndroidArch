@@ -3,6 +3,8 @@
 [![codecov](https://codecov.io/gh/ir2pid/AndroidArch/branch/master/graph/badge.svg)](https://codecov.io/gh/ir2pid/AndroidArch)
 [![codebeat badge](https://codebeat.co/badges/68d49e3e-f69b-4b7f-b2ef-677ee44eb879)](https://codebeat.co/projects/github-com-ir2pid-androidarch-master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f5de87278efb4fa69d55ab3be7ba36a1)](https://www.codacy.com/app/ir2pid/AndroidArch?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ir2pid/AndroidArch&amp;utm_campaign=Badge_Grade)
+![GitHub issue author](https://img.shields.io/github/issues/detail/u/badges/shields/979.svg)
+
 <!--[![shields](https://img.shields.io/badge/minSdkVersion-21-blue.svg)](https://img.shields.io/badge/minSdkVersion-21-blue.svg))-->
 <!--[![shields](https://img.shields.io/badge/targetSdkVersion-26-blue.svg)](https://img.shields.io/badge/targetSdkVersion-26-blue.svg))-->
 <!--[![License Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=true)]-->
