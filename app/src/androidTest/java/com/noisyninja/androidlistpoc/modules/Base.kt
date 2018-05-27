@@ -7,6 +7,9 @@ import com.noisyninja.androidlistpoc.model.Me
 import com.noisyninja.androidlistpoc.model.Name
 import com.noisyninja.androidlistpoc.views.MainActivity
 import com.noisyninja.androidlistpoc.views.MainPresenter
+import io.reactivex.android.plugins.RxAndroidPlugins
+import io.reactivex.plugins.RxJavaPlugins
+import io.reactivex.schedulers.Schedulers
 
 
 open class Base {
@@ -44,4 +47,19 @@ open class Base {
         val FIRSTNAME3 = "firstName3"
         val FIRSTNAME4 = "firstName4"
     }
+
+    protected fun setupLoopers() {
+        //to make sure subscribeOn and observeOn run on same thread
+        //async call becomes synchronous, thus waits for response
+        RxAndroidPlugins.reset()
+        RxJavaPlugins.reset()
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
+        RxJavaPlugins.setIoSchedulerHandler { scheduler -> Schedulers.trampoline() }
+    }
+
+    protected fun tearDownLoopers() {
+        RxAndroidPlugins.reset()
+        RxJavaPlugins.reset()
+    }
+
 }

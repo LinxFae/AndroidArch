@@ -7,6 +7,9 @@ package com.noisyninja.androidlistpoc.views
 
 open class BaseTest {
 
+    /**
+     * when even idling resource is too fast!
+     */
     fun sleepShort() {
         try {
             Thread.sleep(SHORT.toLong())
@@ -16,6 +19,9 @@ open class BaseTest {
 
     }
 
+    /**
+     * when even idling resource is too fast!
+     */
     fun sleepMedium() {
         try {
             Thread.sleep(MEDIUM.toLong())
@@ -25,6 +31,9 @@ open class BaseTest {
 
     }
 
+    /**
+     * when even idling resource is too fast!
+     */
     fun sleepLong() {
         try {
             Thread.sleep(LONG.toLong())

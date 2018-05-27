@@ -6,6 +6,8 @@ import com.noisyninja.androidlistpoc.BuildConfig.RESULT_COUNT
 import com.noisyninja.androidlistpoc.layers.network.NetworkModule
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import retrofit2.Retrofit
@@ -19,32 +21,25 @@ import retrofit2.converter.gson.GsonConverterFactory
 @RunWith(AndroidJUnit4::class)
 class NetworkModuleTest : BaseRepository() {
 
+    @Before
+    fun setup(){
+        setupEnvironment()
+        setupLoopers()
+    }
+    @After
+    fun teardown(){
+        tearDownLoopers()
+    }
 
     @Test
     fun serverCallWithSuccess() {
-
         val url = BuildConfig.BASE_URL
+        setupServer(url)
 
-        val interceptor = HttpLoggingInterceptor()
-                .setLevel(HttpLoggingInterceptor.Level.BODY)
+        val networkObservable =
+                mNetworkModule.getPeople(RESULT_COUNT.toInt())
 
-        val client = OkHttpClient.Builder()
-                .addInterceptor(interceptor)
-                .build()
-
-        val retrofit = Retrofit.Builder()
-                .baseUrl(mMockWebServer.url(url))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build()
-
-        val remoteDataSource = NetworkModule(retrofit)
-
-        val meResponse = remoteDataSource
-                .getPeople(RESULT_COUNT.toInt())
-
-        meResponse.subscribe(mSubscriber)
+        networkObservable.subscribe(mSubscriber)
         mSubscriber.assertNoErrors()
         mSubscriber.assertValue({ it ->
             it.people.size == 100
@@ -68,27 +63,12 @@ class NetworkModuleTest : BaseRepository() {
     fun serverCallWithError() {
         //this is an invalid uri
         val url = BuildConfig.BASE_URL + BuildConfig.API_URI + "/"
+        setupServer(url)
 
-        val interceptor = HttpLoggingInterceptor()
-                .setLevel(HttpLoggingInterceptor.Level.BODY)
+        val networkObservable =
+                mNetworkModule.getPeople(BuildConfig.RESULT_COUNT.toInt())
 
-        val client = OkHttpClient.Builder()
-                .addInterceptor(interceptor)
-                .build()
-
-        val retrofit = Retrofit.Builder()
-                .baseUrl(mMockWebServer.url(url))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build()
-
-        val remoteDataSource = NetworkModule(retrofit)
-
-        val meResponse = remoteDataSource
-                .getPeople(BuildConfig.RESULT_COUNT.toInt())
-
-        meResponse.subscribe(mSubscriber)
+        networkObservable.subscribe(mSubscriber)
         mSubscriber.assertError({ t: Throwable -> t.message!!.isNotEmpty() })
 
     }

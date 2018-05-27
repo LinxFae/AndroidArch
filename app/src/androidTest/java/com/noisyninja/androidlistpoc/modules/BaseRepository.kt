@@ -4,14 +4,15 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Observer
 import android.arch.persistence.room.Room
 import com.noisyninja.androidlistpoc.layers.database.IDatabase
+import com.noisyninja.androidlistpoc.layers.network.NetworkModule
 import com.noisyninja.androidlistpoc.model.MeResponse
-import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.observers.TestObserver
-import io.reactivex.plugins.RxJavaPlugins
-import io.reactivex.schedulers.Schedulers
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.mockwebserver.MockWebServer
-import org.junit.After
-import org.junit.Before
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
@@ -21,16 +22,35 @@ abstract class BaseRepository : Base() {
 
     lateinit var mMockWebServer: MockWebServer
     lateinit var mSubscriber: TestObserver<MeResponse>
+    lateinit var mNetworkModule: NetworkModule
 
     protected lateinit var mIDatabase: IDatabase
 
-    @Before
-    fun setupRepository() {
-        setupEnvironment()
-        setUpMocks()
-        setupLoopers()
-        mMockWebServer = MockWebServer()
+    fun setupServer(url: String) {
+
         mSubscriber = TestObserver()
+
+        val interceptor = HttpLoggingInterceptor()
+                .setLevel(HttpLoggingInterceptor.Level.BODY)
+
+        val client = OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build()
+
+        val retrofit = Retrofit.Builder()
+                .baseUrl(url)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
+
+        mNetworkModule = NetworkModule(retrofit)
+    }
+
+    fun teardownNetwork() {
+    }
+
+    fun setupDatabase() {
 
         mIDatabase = Room.inMemoryDatabaseBuilder(
                 context,
@@ -38,26 +58,9 @@ abstract class BaseRepository : Base() {
                 .build()
     }
 
-    @After
     @Throws(IOException::class)
-    fun teardownRepository() {
+    fun teardownDatabase() {
         mIDatabase.close()
-        tearDownLoopers()
-    }
-
-
-    protected fun setupLoopers() {
-        //to make sure subscribeOn and observeOn run on same thread
-        //async call becomes synchronous, thus waits for response
-        RxAndroidPlugins.reset()
-        RxJavaPlugins.reset()
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
-        RxJavaPlugins.setIoSchedulerHandler { scheduler -> Schedulers.trampoline() }
-    }
-
-    protected fun tearDownLoopers() {
-        RxAndroidPlugins.reset()
-        RxJavaPlugins.reset()
     }
 
 }

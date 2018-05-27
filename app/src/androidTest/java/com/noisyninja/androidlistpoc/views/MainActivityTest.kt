@@ -6,6 +6,7 @@ import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.IdlingRegistry
 import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.action.ViewActions.click
+import android.support.test.espresso.action.ViewActions.pressBack
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.matcher.ViewMatchers.*
@@ -59,9 +60,12 @@ class MainActivityTest : BaseTest() {
      */
     @Test
     fun checkListItemClickableTest() {
+        sleepShort()//because even idling resource was too fast
         onView(withId(R.id.recyclerList))
                 .perform(RecyclerViewActions
-                        .actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
+                        .actionOnItemAtPosition<RecyclerView.ViewHolder>(3, ViewActions.click()))
+        pressBack()
+        //onView(withId(R.id.recyclerList)).perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, swipeDown()))
     }
 
     /**
