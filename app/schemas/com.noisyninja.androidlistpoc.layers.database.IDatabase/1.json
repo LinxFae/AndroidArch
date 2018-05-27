@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "2ddaed3b6c89bcdee433857e4b9522c7",
+    "identityHash": "051e03e82ecdb5c623c9c009b4166fa3",
     "entities": [
       {
         "tableName": "me",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, `picture` TEXT NOT NULL, `id` TEXT NOT NULL, `email` TEXT, `dob` TEXT, `phone` TEXT, `cell` TEXT, `gender` TEXT, `nat` TEXT, PRIMARY KEY(`name`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, `picture` TEXT, `id` TEXT, `location` TEXT, `email` TEXT, `dob` TEXT, `phone` TEXT, `cell` TEXT, `gender` TEXT, `nat` TEXT, PRIMARY KEY(`name`))",
         "fields": [
           {
             "fieldPath": "name",
@@ -18,13 +18,19 @@
             "fieldPath": "picture",
             "columnName": "picture",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "id",
             "columnName": "id",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
+          },
+          {
+            "fieldPath": "location",
+            "columnName": "location",
+            "affinity": "TEXT",
+            "notNull": false
           },
           {
             "fieldPath": "email",
@@ -75,7 +81,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"2ddaed3b6c89bcdee433857e4b9522c7\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"051e03e82ecdb5c623c9c009b4166fa3\")"
     ]
   }
 }

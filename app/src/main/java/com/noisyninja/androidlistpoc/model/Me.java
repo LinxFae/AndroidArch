@@ -14,13 +14,14 @@ public class Me extends BaseDTO {
     @TypeConverters(DataConverter.class)
     private Name name;
 
-    @NonNull
     @TypeConverters(DataConverter.class)
     private Picture picture;
 
-    @NonNull
     @TypeConverters(DataConverter.class)
     private Id id;
+
+    @TypeConverters(DataConverter.class)
+    private Location location;
 
     private String email;
     private String dob;
@@ -42,7 +43,6 @@ public class Me extends BaseDTO {
         this.name = name;
     }
 
-    @NonNull
     public Picture getPicture() {
         return picture;
     }
@@ -51,7 +51,6 @@ public class Me extends BaseDTO {
         this.picture = picture;
     }
 
-    @NonNull
     public Id getId() {
         return id;
     }
@@ -106,5 +105,13 @@ public class Me extends BaseDTO {
 
     public void setNat(String nat) {
         this.nat = nat;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }
