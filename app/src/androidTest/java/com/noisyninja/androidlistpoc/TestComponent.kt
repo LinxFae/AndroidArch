@@ -8,13 +8,9 @@ import com.noisyninja.androidlistpoc.layers.UtilModule
 import com.noisyninja.androidlistpoc.layers.database.DataBaseModule
 import com.noisyninja.androidlistpoc.layers.database.viewmodel.ViewModelFactory
 import com.noisyninja.androidlistpoc.layers.di.NinjaComponent
-import com.noisyninja.androidlistpoc.layers.network.HttpClient
 import com.noisyninja.androidlistpoc.layers.network.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
-import dagger.Provides
-import retrofit2.Retrofit
-import javax.inject.Singleton
 
 /**
  * Mock dagger dependency component

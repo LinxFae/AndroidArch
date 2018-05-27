@@ -2,15 +2,11 @@ package com.noisyninja.androidlistpoc.modules
 
 import android.support.test.runner.AndroidJUnit4
 import com.noisyninja.androidlistpoc.BuildConfig
-import com.noisyninja.androidlistpoc.layers.network.HttpClient
-import com.noisyninja.androidlistpoc.layers.network.ICallback
 import com.noisyninja.androidlistpoc.layers.network.NetworkModule
-import com.noisyninja.androidlistpoc.model.MeResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -20,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 
 @RunWith(AndroidJUnit4::class)
-class NetworkModuleTest :BaseRepository(){
+class NetworkModuleTest : BaseRepository() {
 
 
     @Test

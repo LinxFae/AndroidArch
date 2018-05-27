@@ -34,5 +34,4 @@ class DatabaseModuleTest : BaseRepository() {
         meList = mIDatabase.databaseDao().all.getValueBlocking()
         Assert.assertEquals(meList?.size, 0)
     }
-
 }
