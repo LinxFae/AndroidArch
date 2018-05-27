@@ -56,7 +56,7 @@ android {
         animationsDisabled = true
     }
 
-    lintOptions {//to contibue build when there are lint issues
+    lintOptions {//to continue build when there are lint issues
         abortOnError false
     }
 
