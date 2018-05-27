@@ -3,10 +3,9 @@ package com.noisyninja.androidlistpoc.modules
 import android.content.Context
 import android.support.test.InstrumentationRegistry
 import com.noisyninja.androidlistpoc.TestApplication
+import com.noisyninja.androidlistpoc.layers.UtilModule
 import com.noisyninja.androidlistpoc.model.Me
 import com.noisyninja.androidlistpoc.model.Name
-import com.noisyninja.androidlistpoc.views.MainActivity
-import com.noisyninja.androidlistpoc.views.MainPresenter
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
@@ -17,10 +16,9 @@ open class Base {
     /*@Rule
     @JvmField
     var mActivityTestRule = IntentsTestRule(MainActivity::class.java)*/
-    lateinit var context: Context
-    lateinit var app: TestApplication
-    lateinit var mainActivity: MainActivity
-    lateinit var mainPresenter: MainPresenter
+    lateinit var mContext: Context
+    lateinit var mApp: TestApplication
+    lateinit var mUtilModule: UtilModule
 
     lateinit var me1: Me
     lateinit var me2: Me
@@ -30,8 +28,9 @@ open class Base {
     val page = 1
 
     fun setupEnvironment() {
-        context = InstrumentationRegistry.getTargetContext()
-        app = InstrumentationRegistry.getTargetContext().applicationContext as TestApplication
+        mContext = InstrumentationRegistry.getTargetContext()
+        mApp = InstrumentationRegistry.getTargetContext().applicationContext as TestApplication
+        mUtilModule = UtilModule(mContext)
     }
 
     fun setUpMocks() {

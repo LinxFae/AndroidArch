@@ -49,7 +49,7 @@ class MainActivityNavigationTest : BaseTest() {
     }
 
     /**
-     * test app navigation
+     * test all navigation pathways
      */
     @Test
     fun mainActivityTest() {

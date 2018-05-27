@@ -60,7 +60,7 @@ class MainActivityTest : BaseTest() {
      */
     @Test
     fun checkListItemClickableTest() {
-        sleepShort()//because even idling resource was too fast
+        sleepShort()
         onView(withId(R.id.recyclerList))
                 .perform(RecyclerViewActions
                         .actionOnItemAtPosition<RecyclerView.ViewHolder>(3, ViewActions.click()))
@@ -73,6 +73,7 @@ class MainActivityTest : BaseTest() {
      */
     @Test
     fun checkListCountTest() {
+        sleepShort()
         onView(withId(R.id.recyclerList)).check(matches(isDisplayed()))
         Assert.assertEquals(mainActivity.recyclerList.adapter.itemCount, 100)
     }
@@ -82,6 +83,7 @@ class MainActivityTest : BaseTest() {
      */
     @Test
     fun sortButtonTest() {
+        sleepShort()
         onView(withId(R.id.fab)).check(matches(isDisplayed())).check(matches(isClickable())).perform(click())
     }
 }

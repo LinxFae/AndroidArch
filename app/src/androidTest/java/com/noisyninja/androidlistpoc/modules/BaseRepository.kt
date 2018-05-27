@@ -53,7 +53,7 @@ abstract class BaseRepository : Base() {
     fun setupDatabase() {
 
         mIDatabase = Room.inMemoryDatabaseBuilder(
-                context,
+                mContext,
                 IDatabase::class.java)
                 .build()
     }

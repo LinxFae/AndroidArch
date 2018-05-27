@@ -2,11 +2,13 @@ package com.noisyninja.androidlistpoc
 
 import android.content.Context
 import com.noisyninja.androidlistpoc.model.Me
+import com.noisyninja.androidlistpoc.model.Name
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
+import java.lang.reflect.Type
 
 /**
  * Example local unit test, which will execute on the development machine (host).

@@ -71,10 +71,6 @@ constructor(private val mContext: Context) {
         return GsonBuilder().setPrettyPrinting().create().fromJson(string, t)
     }
 
-    fun <T> fromJson(string: String, type: Type): T? {
-        return GsonBuilder().setPrettyPrinting().create().fromJson<T>(string, type)
-    }
-
     companion object {
         private val DEFAULT_PREF = "DEFAULT_PREF"
     }

@@ -8,7 +8,7 @@ package com.noisyninja.androidlistpoc.views
 open class BaseTest {
 
     /**
-     * when even idling resource is too fast!
+     * fail-safe when even idling resource is too fast!
      */
     fun sleepShort() {
         try {
@@ -20,7 +20,7 @@ open class BaseTest {
     }
 
     /**
-     * when even idling resource is too fast!
+     * fail-safe when even idling resource is too fast!
      */
     fun sleepMedium() {
         try {
@@ -32,7 +32,7 @@ open class BaseTest {
     }
 
     /**
-     * when even idling resource is too fast!
+     * fail-safe when even idling resource is too fast!
      */
     fun sleepLong() {
         try {
