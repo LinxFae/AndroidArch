@@ -41,8 +41,8 @@ before_script:
 #- chmod a+x gradle/wrapper/gradle-wrapper.jar
 
 script:
-  - ./gradlew build jacocoTestReport assembleAndroidTest lint --stacktrace
-  - ./gradlew connectedAndroidTest
+  - ./gradlew test connectedAndroidTest
+  - ./gradlew build jacocoTestReport lint --stacktrace
 
 #upload code coverage to codecov.io
 after_success:
