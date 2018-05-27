@@ -5,9 +5,9 @@
 [![codecov](https://codecov.io/gh/ir2pid/AndroidArch/branch/master/graph/badge.svg)](https://codecov.io/gh/ir2pid/AndroidArch)
 [![GitHub last commit](https://img.shields.io/github/last-commit/ir2pid/AndroidArch.svg)](https://github.com/ir2pid/AndroidArch)
 </br>
-[![shields](https://img.shields.io/badge/minSdkVersion-15-orange.svg)](https://github.com/ir2pid/AndroidArch)
+[![shields](https://img.shields.io/badge/minSdkVersion-15-yellowgreen.svg)](https://github.com/ir2pid/AndroidArch)
 [![shields](https://img.shields.io/badge/targetSdkVersion-26-blue.svg)](https://github.com/ir2pid/AndroidArch)
-[![License Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=true)](https://github.com/ir2pid/AndroidArch)
+[![License Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-orange.svg?style=true)](https://github.com/ir2pid/AndroidArch)
 </br>
 
 A proof of concept for google's architecture components which uses REST api from randomuser.me/
