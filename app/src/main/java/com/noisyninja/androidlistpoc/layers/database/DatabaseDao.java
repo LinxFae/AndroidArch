@@ -23,8 +23,8 @@ public interface DatabaseDao {
     LiveData<List<Me>> getAll();
 
 
-    @Query("SELECT * FROM me where userId LIKE  :userId")
-    LiveData<Me> findById(int userId);
+    @Query("SELECT * FROM me where name LIKE  :name")
+    LiveData<Me> findById(String name);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Me customer);

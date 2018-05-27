@@ -1,35 +1,28 @@
 package com.noisyninja.androidlistpoc.model;
 
-import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 
 @Entity(tableName = "me")
-public class Me {
+public class Me extends BaseDTO {
 
-    @PrimaryKey(autoGenerate = true)
-    @Expose
-    @ColumnInfo(name = "userId")
-    private int userId;
+    @PrimaryKey()
+    @NonNull
+    @TypeConverters(DataConverter.class)
+    private Name name;
 
     @NonNull
     @TypeConverters(DataConverter.class)
-    @SerializedName("name")
-    @Expose
-    private Name name;
-    @TypeConverters(DataConverter.class)
-    @SerializedName("picture")
-    @Expose
     private Picture picture;
-    @Expose
-    @ColumnInfo(name = "page")
-    private int page;
+
+    private String email;
+    private String dob;
+    private String phone;
+    private String cell;
+    private String gender;
 
     public Me(@NonNull Name name) {
         this.name = name;
@@ -52,19 +45,4 @@ public class Me {
         this.picture = picture;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getPage() {
-        return page;
-    }
-
-    public void setPage(int page) {
-        this.page = page;
-    }
 }

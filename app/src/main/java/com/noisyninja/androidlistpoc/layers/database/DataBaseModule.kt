@@ -56,7 +56,7 @@ open class DataBaseModule @Inject constructor(internal var mUtilModule: UtilModu
 
     }
 
-    override fun findById(userId: Int): LiveData<Me> {
+    override fun findById(userId: String): LiveData<Me> {
         return mDataBase.databaseDao().findById(userId)
     }
 

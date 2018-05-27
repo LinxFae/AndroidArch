@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView
 import com.noisyninja.androidlistpoc.NinjaIdlingResource
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.TestApplication
+import junit.framework.Assert
 import kotlinx.android.synthetic.main.content_main.*
 import org.junit.After
 import org.junit.Before
@@ -57,10 +58,19 @@ class MainActivityTest : BaseTest() {
      * test if adapter has first items clickable
      */
     @Test
-    fun checkListCountTest() {
+    fun checkListItemClickableTest() {
         onView(withId(R.id.recyclerList))
                 .perform(RecyclerViewActions
                         .actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
+    }
+
+    /**
+     * test if adapter has first items clickable
+     */
+    @Test
+    fun checkListCountTest() {
+        onView(withId(R.id.recyclerList)).check(matches(isDisplayed()))
+        Assert.assertEquals(mainActivity.recyclerList.adapter.itemCount, 100)
     }
 
     /**
@@ -70,36 +80,4 @@ class MainActivityTest : BaseTest() {
     fun sortButtonTest() {
         onView(withId(R.id.fab)).check(matches(isDisplayed())).check(matches(isClickable())).perform(click())
     }
-
-/*
-    @Test
-    fun testGetListCalled() {
-        val recyclerView = onView(
-                allOf(withId(R.id.recyclerList)))
-        sleepShort()
-        recyclerView.perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
-        verify(mainPresenter).showDetail(Matchers.any())
-    }
-*/
-
-    /**
-     * test if first element displayed
-     *//*
-    @Test
-    fun clickFirstEntryTest() {
-        val recyclerView = onView(
-                allOf(withId(R.id.recyclerList)))
-        sleepShort()
-        recyclerView.perform(actionOnItemAtPosition<StickyHeaderGridAdapter.ViewHolder>(1, click()))
-
-        Intents.intended(allOf(
-                //hasAction(equalTo(Intent.ACTION_VIEW)),
-                //hasCategories(hasItem(equalTo(Intent.CATEGORY_BROWSABLE))),
-                //hasData(hasHost(equalTo("www.google.com"))),
-                hasFlag(Intent.FLAG_ACTIVITY_NEW_TASK),
-                hasExtras(allOf(
-                        hasEntry(equalTo(context.getString(R.string.user_id_key)), any(String::class.java)))),
-                IntentMatchers.hasComponent(DetailActivity::class.java.canonicalName)))
-    }*/
-
 }

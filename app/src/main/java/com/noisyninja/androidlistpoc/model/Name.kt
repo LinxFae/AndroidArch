@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 class Name(@field:SerializedName("first")
            @field:Expose
-           var first: String?) {
+           var first: String?) : BaseDTO() {
 
     @SerializedName("title")
     @Expose

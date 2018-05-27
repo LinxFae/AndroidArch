@@ -60,7 +60,6 @@ open class MeViewModel @Inject constructor(val dataBaseModule: DataBaseModule,
 
     override fun onSuccess(result: MeResponse?) {
         utilModule.logI("net response")
-
         dataBaseModule.delete(errorResponse)
         dataBaseModule.insertAll(result?.people)
         dispose()

@@ -5,12 +5,8 @@ import android.databinding.BindingAdapter;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.noisyninja.androidlistpoc.R;
 import com.squareup.picasso.Picasso;
-
-import java.lang.reflect.Type;
-import java.util.List;
 
 /**
  * data binding converters
@@ -35,8 +31,7 @@ public class DataConverter {
         if (name == null) {
             return (null);
         }
-        Gson gson = new Gson();
-        return gson.toJson(name);
+        return name.toString();
     }
 
     @TypeConverter
@@ -44,6 +39,7 @@ public class DataConverter {
         if (nameString == null) {
             return (null);
         }
+
         Gson gson = new Gson();
         return gson.fromJson(nameString, Name.class);
     }
@@ -53,8 +49,7 @@ public class DataConverter {
         if (picture == null) {
             return (null);
         }
-        Gson gson = new Gson();
-        return gson.toJson(picture);
+        return picture.toString();
     }
 
     @TypeConverter
@@ -64,27 +59,5 @@ public class DataConverter {
         }
         Gson gson = new Gson();
         return gson.fromJson(pictureString, Picture.class);
-    }
-
-    @TypeConverter
-    public String fromPictureList(List<Picture> pictureList) {
-        if (pictureList == null) {
-            return (null);
-        }
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<Picture>>() {
-        }.getType();
-        return gson.toJson(pictureList, type);
-    }
-
-    @TypeConverter
-    public List<Picture> toPictureList(String pictureListString) {
-        if (pictureListString == null) {
-            return (null);
-        }
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<Picture>>() {
-        }.getType();
-        return gson.fromJson(pictureListString, type);
     }
 }

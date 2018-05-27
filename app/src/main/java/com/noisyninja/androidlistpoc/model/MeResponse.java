@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MeResponse {
+public class MeResponse extends BaseDTO  {
 
     @SerializedName("results")
     @Expose
