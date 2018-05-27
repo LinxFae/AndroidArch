@@ -15,6 +15,9 @@ import retrofit2.http.Query;
 public interface INetworkDao {
 
     @GET(BuildConfig.API_URI)
-    Observable<MeResponse> getPeople(@Query(BuildConfig.PAGE_URI) int page, @Query(BuildConfig.RESULTS_URI) int count, @Query(BuildConfig.NETSYNC_SEED) int seed);
+    Observable<MeResponse> getPeople(@Query(BuildConfig.PAGE_URI) int page,
+                                     @Query(BuildConfig.RESULTS_URI) int count,
+                                     @Query(BuildConfig.NETSYNC_SEED) int seed,
+                                     @Query(BuildConfig.NATIONS) String nations);
 
 }

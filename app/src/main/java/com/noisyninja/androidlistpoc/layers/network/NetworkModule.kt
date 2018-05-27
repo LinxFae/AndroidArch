@@ -1,5 +1,7 @@
 package com.noisyninja.androidlistpoc.layers.network
 
+import com.noisyninja.androidlistpoc.BuildConfig.NATIONS_VALUE
+import com.noisyninja.androidlistpoc.BuildConfig.NETSYNC_SEED_VALUE
 import com.noisyninja.androidlistpoc.model.MeResponse
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,13 +16,13 @@ import javax.inject.Inject
 
 open class NetworkModule @Inject constructor(private val retrofit: Retrofit) {
 
-    fun getPeople(page: Int, count: Int, seed: Int): Observable<MeResponse> {
-        return getCustomerObservable(page, count, seed)//.subscribeWith(getObserver(iCallback))
+    fun getPeople(count: Int): Observable<MeResponse> {
+        return getCustomerObservable(count)//.subscribeWith(getObserver(iCallback))
     }
 
-    private fun getCustomerObservable(page: Int, count: Int, seed: Int): Observable<MeResponse> {
+    private fun getCustomerObservable(count: Int): Observable<MeResponse> {
         return retrofit.create(INetworkDao::class.java)
-                .getPeople(page, count, seed)
+                .getPeople(1, count, NETSYNC_SEED_VALUE.toInt(), NATIONS_VALUE)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }

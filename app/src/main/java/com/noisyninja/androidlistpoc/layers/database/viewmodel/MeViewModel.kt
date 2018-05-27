@@ -47,7 +47,7 @@ open class MeViewModel @Inject constructor(val dataBaseModule: DataBaseModule,
             utilModule.logI("getMe network")
             compositeDisposables
                     .add(networkModule
-                            .getPeople(1, RESULT_COUNT.toInt(), NETSYNC_SEED_VALUE.toInt()).subscribe(
+                            .getPeople(RESULT_COUNT.toInt()).subscribe(
                                     { onSuccess(it) },
                                     { onError(it) }
                             ))

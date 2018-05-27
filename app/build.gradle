@@ -23,6 +23,8 @@ android {
 
         buildConfigField "String", "BASE_URL", CONFIG("base.url")
         buildConfigField "String", "PAGE_URI", CONFIG("page.uri")
+        buildConfigField "String", "NATIONS", CONFIG("nations")
+        buildConfigField "String", "NATIONS_VALUE", CONFIG("nations.value")
         buildConfigField "String", "RESULTS_URI", CONFIG("results.uri")
         buildConfigField "String", "RESULT_COUNT", CONFIG("count.uri")
         buildConfigField "String", "API_URI", CONFIG("api.uri")

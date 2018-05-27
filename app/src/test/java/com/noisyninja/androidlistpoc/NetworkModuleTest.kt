@@ -1,5 +1,7 @@
 package com.noisyninja.androidlistpoc
 
+import com.noisyninja.androidlistpoc.BuildConfig.NETSYNC_SEED_VALUE
+import com.noisyninja.androidlistpoc.BuildConfig.RESULT_COUNT
 import com.noisyninja.androidlistpoc.layers.network.NetworkModule
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -59,7 +61,7 @@ class NetworkModuleTest : BaseRepository() {
         val remoteDataSource = NetworkModule(retrofit)
 
         val meResponse = remoteDataSource
-                .getPeople(page, BuildConfig.RESULT_COUNT.toInt(), BuildConfig.NETSYNC_SEED_VALUE.toInt())
+                .getPeople(RESULT_COUNT.toInt())
 
         meResponse.subscribe(mSubscriber)
         mSubscriber.assertNoErrors()
@@ -103,7 +105,7 @@ class NetworkModuleTest : BaseRepository() {
         val remoteDataSource = NetworkModule(retrofit)
 
         val meResponse = remoteDataSource
-                .getPeople(1, -0, BuildConfig.NETSYNC_SEED_VALUE.toInt())
+                .getPeople(RESULT_COUNT.toInt())
 
         meResponse.subscribe(mSubscriber)
         mSubscriber.assertError({ t: Throwable -> t.message!!.isNotEmpty() })

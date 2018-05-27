@@ -60,4 +60,38 @@ public class DataConverter {
         Gson gson = new Gson();
         return gson.fromJson(pictureString, Picture.class);
     }
+
+    @TypeConverter
+    public String fromId(Id id) {
+        if (id == null) {
+            return (null);
+        }
+        return id.toString();
+    }
+
+    @TypeConverter
+    public Id toId(String idString) {
+        if (idString == null) {
+            return (null);
+        }
+        Gson gson = new Gson();
+        return gson.fromJson(idString, Id.class);
+    }
+
+    @TypeConverter
+    public String fromLocation(Location location) {
+        if (location == null) {
+            return (null);
+        }
+        return location.toString();
+    }
+
+    @TypeConverter
+    public Location toLocation(String locationString) {
+        if (locationString == null) {
+            return (null);
+        }
+        Gson gson = new Gson();
+        return gson.fromJson(locationString, Location.class);
+    }
 }
