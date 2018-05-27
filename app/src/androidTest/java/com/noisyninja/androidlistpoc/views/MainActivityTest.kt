@@ -60,11 +60,13 @@ class MainActivityTest : BaseTest() {
      */
     @Test
     fun checkListItemClickableTest() {
-        sleepLong()
+        sleepShort()
         onView(withId(R.id.recyclerList))
                 .perform(RecyclerViewActions
                         .actionOnItemAtPosition<RecyclerView.ViewHolder>(3, ViewActions.click()))
+        sleepShort()
         pressBack()
+        sleepShort()
         //onView(withId(R.id.recyclerList)).perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, swipeDown()))
     }
 
