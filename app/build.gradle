@@ -38,8 +38,8 @@ android {
             testCoverageEnabled true
         }
         release {//remove unused code and resources
-            shrinkResources true
-            minifyEnabled false
+            //shrinkResources true
+            //minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
