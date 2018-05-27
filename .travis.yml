@@ -5,9 +5,11 @@ language: android
 #install: gradle wrapper --gradle-version 4.4
 
 env:
-  global:
-    - ANDROID_TARGET=android-26
-    - ANDROID_ABI=armeabi-v7a
+#  global:
+#    MALLOC_ARENA_MAX=2
+  matrix:
+    - ANDROID_TARGET=android-19 ANDROID_ABI=armeabi-v7a
+
 
 android:
   components:
@@ -18,6 +20,7 @@ android:
     - build-tools-26.0.2
 
     # The SDK version used to compile your project
+    - android-19
     - android-26
 
     # Additional components
@@ -28,18 +31,18 @@ android:
     - extra-android-support
     - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
 
-#before_script:
+before_script:
+  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI --skin WVGA800
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
 # - ./gradlew :app:assembleDebug
 #- chmod a+x gradlew
 #- chmod a+x gradle/wrapper/gradle-wrapper.jar
 
 script:
   - ./gradlew build jacocoTestReport assembleAndroidTest lint --stacktrace
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
-  - ./gradlew connectedCheck
+  - ./gradlew connectedAndroidTest
 
 #upload code coverage to codecov.io
 after_success:
