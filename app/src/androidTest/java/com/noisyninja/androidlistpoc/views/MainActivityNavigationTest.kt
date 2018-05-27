@@ -6,7 +6,6 @@ import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.intent.rule.IntentsTestRule
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.runner.AndroidJUnit4
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.codewaves.stickyheadergrid.StickyHeaderGridAdapter
@@ -43,14 +42,14 @@ class MainActivityNavigationTest : BaseTest() {
 
         val floatingActionButton = Espresso.onView(
                 Matchers.allOf(ViewMatchers.withId(R.id.fab)))
-
-        recyclerView.perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(2, ViewActions.click()))
+        sleepShort()
+        recyclerView.perform(RecyclerViewActions.actionOnItemAtPosition<StickyHeaderGridAdapter.ViewHolder>(2, ViewActions.click()))
         sleepShort()
         Espresso.pressBack()
         floatingActionButton.perform(ViewActions.click())
         sleepShort()
 
-        recyclerView.perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, ViewActions.click()))
+        recyclerView.perform(RecyclerViewActions.actionOnItemAtPosition<StickyHeaderGridAdapter.ViewHolder>(1, ViewActions.click()))
         sleepShort()
         Espresso.pressBack()
         floatingActionButton.perform(ViewActions.click())
