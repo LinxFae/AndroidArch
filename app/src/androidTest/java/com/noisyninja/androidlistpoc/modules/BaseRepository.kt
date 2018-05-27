@@ -4,9 +4,12 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Observer
 import android.arch.persistence.room.Room
 import com.noisyninja.androidlistpoc.layers.database.IDatabase
+import com.noisyninja.androidlistpoc.model.MeResponse
 import io.reactivex.android.plugins.RxAndroidPlugins
+import io.reactivex.observers.TestObserver
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
+import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Before
 import java.io.IOException
@@ -16,12 +19,18 @@ import java.util.concurrent.TimeUnit
 
 abstract class BaseRepository : Base() {
 
+    lateinit var mMockWebServer: MockWebServer
+    lateinit var mSubscriber: TestObserver<MeResponse>
+
     protected lateinit var mIDatabase: IDatabase
 
     @Before
     fun setupRepository() {
         setupEnvironment()
         setUpMocks()
+        setupLoopers()
+        mMockWebServer = MockWebServer()
+        mSubscriber = TestObserver()
 
         mIDatabase = Room.inMemoryDatabaseBuilder(
                 context,
@@ -33,6 +42,7 @@ abstract class BaseRepository : Base() {
     @Throws(IOException::class)
     fun teardownRepository() {
         mIDatabase.close()
+        tearDownLoopers()
     }
 
 

@@ -25,9 +25,11 @@ class DatabaseModuleTest : BaseRepository() {
         mIDatabase.databaseDao().insert(me1)
 
         var meList = mIDatabase.databaseDao().all.getValueBlocking()
+
         Assert.assertEquals(meList?.size, 1)
 
-        mIDatabase.databaseDao().delete(me1)
+        val retrievedMe = meList?.get(0)
+        mIDatabase.databaseDao().delete(retrievedMe)
 
         meList = mIDatabase.databaseDao().all.getValueBlocking()
         Assert.assertEquals(meList?.size, 0)

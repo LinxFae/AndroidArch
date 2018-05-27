@@ -7,9 +7,9 @@ import com.noisyninja.androidlistpoc.layers.AppExecutors
 import com.noisyninja.androidlistpoc.layers.RefWatcherModule
 import com.noisyninja.androidlistpoc.layers.UtilModule
 import com.noisyninja.androidlistpoc.layers.database.DataBaseModule
-import com.noisyninja.androidlistpoc.layers.database.viewmodel.MeViewModel
 import com.noisyninja.androidlistpoc.layers.database.viewmodel.ViewModelFactory
 import com.noisyninja.androidlistpoc.layers.di.NinjaComponent
+import com.noisyninja.androidlistpoc.layers.network.HttpClient
 import com.noisyninja.androidlistpoc.layers.network.NetworkModule
 import org.mockito.Mockito
 
@@ -19,17 +19,15 @@ import org.mockito.Mockito
  */
 class TestApplication : NinjaApp() {
 
-    lateinit var viewModelFactory: ViewModelFactory
-    lateinit var meViewModel: MeViewModel
-
-    lateinit var refWatcherModule: RefWatcherModule
-    lateinit var utilModule: UtilModule
-    lateinit var resourcesModule: Resources
-    lateinit var networkModule: NetworkModule
-    lateinit var appExecutors: AppExecutors
-    lateinit var testApplication: TestApplication
     lateinit var appContext: Context
+    lateinit var testApplication: TestApplication
+    lateinit var resourcesModule: Resources
+    lateinit var utilModule: UtilModule
+    lateinit var networkModule: NetworkModule
     lateinit var dataBaseModule: DataBaseModule
+    lateinit var viewModelFactory: ViewModelFactory
+    lateinit var refWatcherModule: RefWatcherModule
+    lateinit var appExecutors: AppExecutors
 
     override val ninjaComponent: NinjaComponent by lazy {
         initialise()
@@ -45,35 +43,18 @@ class TestApplication : NinjaApp() {
                 .refWatcher(refWatcherModule)
                 .vmf(viewModelFactory)
                 .build()
-        //.systemModule(SystemModule(this, LeakCanary.install(this)))
-        //.repositoryModule(RepositoryModule())
-        //.database()
     }
 
     private fun initialise() {
-        mockAll()
-
-        //Mockito.`when`(meViewModel.hello()).thenReturn(1)
-        Mockito.`when`(viewModelFactory.create(MeViewModel::class.java)).thenReturn(meViewModel)
-    }
-
-    private fun mockAll() {
-        refWatcherModule = Mockito.mock(RefWatcherModule::class.java)
-        utilModule = Mockito.mock(UtilModule::class.java)
-        resourcesModule = Mockito.mock(Resources::class.java)
-        networkModule = Mockito.mock(NetworkModule::class.java)
-        appExecutors = Mockito.mock(AppExecutors::class.java)
         testApplication = InstrumentationRegistry.getTargetContext().applicationContext as TestApplication
         appContext = InstrumentationRegistry.getTargetContext()
-        dataBaseModule = Mockito.mock(DataBaseModule::class.java)
-        meViewModel = Mockito.mock(MeViewModel::class.java)
-        viewModelFactory = Mockito.mock(ViewModelFactory::class.java)
+        utilModule = UtilModule(appContext)
+        resourcesModule = appContext.resources
+        networkModule = NetworkModule(HttpClient(appContext, utilModule).client)
+        dataBaseModule = DataBaseModule(utilModule, appContext)
+        viewModelFactory = ViewModelFactory(dataBaseModule, utilModule, resources, networkModule)
 
-/*
-        meViewModel.dataBaseModule = dataBaseModule
-        meViewModel.networkModule = networkModule
-        meViewModel.resources = resourcesModule
-        meViewModel.utilModule = utilModule*/
+        refWatcherModule = Mockito.mock(RefWatcherModule::class.java)
+        appExecutors = Mockito.mock(AppExecutors::class.java)
     }
-
 }

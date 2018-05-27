@@ -35,6 +35,7 @@ android {
 
     buildTypes {
         debug {
+            //to enable test coverage using jacoco
             testCoverageEnabled true
         }
         release {
@@ -43,6 +44,10 @@ android {
         }
     }
 
+    testOptions {
+        //to disable view animations which effect espresso tests
+        animationsDisabled = true
+    }
 
     dexOptions {
         javaMaxHeapSize "2048M"
@@ -79,8 +84,9 @@ dependencies {
     //okhttp
     compile "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
     compile "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
-    //okhttp test
+    //okhttp test mock server for jUnit and androidTests
     testCompile "com.squareup.okhttp3:mockwebserver:$rootProject.okhttpVersion"
+    androidTestCompile "com.squareup.okhttp3:mockwebserver:$rootProject.okhttpVersion"
 
     // gson  picasso
     compile "com.google.code.gson:gson:$rootProject.gsonVersion"

@@ -24,6 +24,8 @@ open class Base {
     lateinit var me3: Me
     lateinit var me4: Me
 
+    val page = 1
+
     fun setupEnvironment() {
         context = InstrumentationRegistry.getTargetContext()
         app = InstrumentationRegistry.getTargetContext().applicationContext as TestApplication
