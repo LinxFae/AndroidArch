@@ -4,6 +4,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="mainPresenter"
             type="com.noisyninja.androidlistpoc.views.IMainPresenter" />
@@ -13,31 +15,79 @@
             type="com.noisyninja.androidlistpoc.model.Me" />
     </data>
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:padding="@dimen/text_margin"
-        android:onClick="@{(view) -> mainPresenter.showDetail(me)}"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border"
-            android:contentDescription="@string/customer_thumbnail"
-            app:srcCompat="@mipmap/ic_launcher"
-            app:thumbnail="@{me.picture.large}" />
+            android:onClick="@{(view) -> mainPresenter.showDetail(me)}"
+            android:padding="@dimen/text_margin">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{me.name.first}"
-            android:padding="@dimen/text_margin"
-            android:textSize="@dimen/text_size1"
-            android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/border"
+                android:contentDescription="@string/customer_thumbnail"
+                app:srcCompat="@mipmap/ic_launcher"
+                app:thumbnail="@{me.picture.large}" />
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/image"
+                android:layout_toLeftOf="@+id/genderIcon"
+                android:layout_toRightOf="@id/image"
+                android:layout_toStartOf="@+id/genderIcon"
+                android:gravity="left"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/text_margin"
+                    android:text="@{me.name.first+` `+me.name.last}"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/text_size1"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/text_margin"
+                    android:text="@{@string/phone +` `+me.cell}"
+                    android:textColor="@color/green"
+                    android:textSize="@dimen/text_size1"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/text_margin"
+                    android:text="@{@string/nationality +` `+me.nat}"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/text_size1"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <com.noisyninja.androidlistpoc.views.custom.IconTextView
+                android:id="@+id/genderIcon"
+                android:layout_width="@dimen/text_size2"
+                android:layout_height="@dimen/text_size2"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="@{me.isMale ?@string/male2:@string/female2}"
+                android:textColor="@{me.isMale ?@color/colorPrimary:@color/colorAccent}" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </layout>

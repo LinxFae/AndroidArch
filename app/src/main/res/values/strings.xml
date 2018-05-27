@@ -11,10 +11,17 @@
     <string name="done_text">Done.</string>
     <string name="unbookmark">&#xf25d;</string>
     <string name="user">&#xf007;</string>
+    <string name="male">&#xf183;</string>
+    <string name="female">&#xf182;</string>
+    <string name="male2">&#xf229;</string>
+    <string name="female2">&#xf221;</string>
     <string name="error_book">"already booked, released by 15 mins"</string>
     <string name="error_net">"could not connect"</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="out_of_scope">but detail page was not required</string>
     <string name="reverse">List reversed!</string>
+    <string name="phone">Phone: </string>
+    <string name="dob">DOB: </string>
+    <string name="nationality">Nationality: </string>
     <string name="unknownVMClass">Unknown View Model Class</string>
 </resources>

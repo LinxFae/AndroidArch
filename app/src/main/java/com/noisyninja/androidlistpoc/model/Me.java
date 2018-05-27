@@ -5,10 +5,15 @@ import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
 
+import com.noisyninja.androidlistpoc.layers.Utils;
+
+import okhttp3.internal.Util;
+
 
 @Entity(tableName = "me")
 public class Me extends BaseDTO {
 
+    public static final String MALE = "male";
     @PrimaryKey()
     @NonNull
     @TypeConverters(DataConverter.class)
@@ -32,6 +37,10 @@ public class Me extends BaseDTO {
 
     public Me(@NonNull Name name) {
         this.name = name;
+    }
+
+    public boolean isMale() {
+        return gender.equals(MALE);
     }
 
     @NonNull
