@@ -20,10 +20,16 @@ coded in a mixture of kotlin and Java uses android architecture components like
 - ViewModel for Activity/Fragment lifecycle awareness
 - Room for ORM
 - okHttp and Retrofit for network calls
-- RxJava for observing network data
+- RxJava for observing network data and applying filters on stream
 - Dagger2 for dependency injection
 
-### For unit testing, integration and UI testing respectively.
+### For unit testing, integration and UI testing.
 - Junit,
 - Mockito and
 - Espresso
+
+### For CI and static code analysis 
+- Travis
+- CodeBeat
+- Codacy
+- Codecov
