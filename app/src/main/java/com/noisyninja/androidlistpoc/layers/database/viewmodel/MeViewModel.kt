@@ -37,10 +37,6 @@ open class MeViewModel @Inject constructor(val dataBaseModule: DataBaseModule,
         meLiveData = dataBaseModule.all
     }
 
-    fun hello(): Int {
-        return 1
-    }
-
     fun getMe(): LiveData<List<Me>> {
 
         if (meLiveData.value == null || meLiveData.value!!.isEmpty() || meLiveData.value!!.size < 2) {

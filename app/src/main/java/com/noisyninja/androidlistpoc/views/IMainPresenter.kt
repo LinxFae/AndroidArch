@@ -9,5 +9,8 @@ import com.noisyninja.androidlistpoc.model.Me
 interface IMainPresenter {
     fun showDetail(me: Me)
     fun getList()
+    fun getListGender():String
+    fun getListNation():String
     fun reverseList(arrayList: ArrayList<Me>): ArrayList<Me>
+
 }

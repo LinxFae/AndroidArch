@@ -3,14 +3,11 @@ package com.noisyninja.androidlistpoc.views
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.LinearLayoutManager.VERTICAL
-import android.support.v7.widget.RecyclerView
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import com.codewaves.stickyheadergrid.StickyHeaderGridLayoutManager
 import com.noisyninja.androidlistpoc.NinjaApp
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.model.Me
@@ -47,16 +44,13 @@ open class MainActivity : AppCompatActivity(), IMainActivity {
         }
 
         fab.setOnClickListener { view ->
-            /*
-            * this ugly bit of code is because StickyHeaderGridLayoutManager
-            * can't handle notifydata when the data source change has different section and offsets
-            */
-            mIMainPresenter.reverseList(mResultList)
-            /*recyclerList.adapter = null //lose reference of last adapter to free memory
-            recyclerList.adapter = MainAdapter(mResultList, mIMainPresenter)  //create new adapter to prevent notifydatasetchanged crash
-            */
-            recyclerList.adapter.notifyDataSetChanged()
-            Snackbar.make(view, getString(R.string.reverse), Snackbar.LENGTH_LONG)
+            val nation = mIMainPresenter.getListNation()
+            Snackbar.make(view, getString(R.string.filter, nation), Snackbar.LENGTH_LONG)
+                    .show()
+        }
+        fab2.setOnClickListener { view ->
+            val gender = mIMainPresenter.getListGender()
+            Snackbar.make(view, getString(R.string.filter, gender), Snackbar.LENGTH_LONG)
                     //.setAction("Action", null)
                     .show()
         }

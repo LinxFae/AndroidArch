@@ -1,11 +1,14 @@
 package com.noisyninja.androidlistpoc.layers.database
 
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.Transformations
 import android.arch.persistence.room.Room
 import android.content.Context
 import com.noisyninja.androidlistpoc.BuildConfig
 import com.noisyninja.androidlistpoc.layers.UtilModule
+import com.noisyninja.androidlistpoc.model.Gender
 import com.noisyninja.androidlistpoc.model.Me
+import com.noisyninja.androidlistpoc.model.Nation
 import io.reactivex.Completable
 import io.reactivex.CompletableObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -13,6 +16,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Action
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
+
 
 /**
  * databse client

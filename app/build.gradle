@@ -19,8 +19,6 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "com.noisyninja.androidlistpoc.CustomTestRunner"
-
         buildConfigField "String", "BASE_URL", CONFIG("base.url")
         buildConfigField "String", "PAGE_URI", CONFIG("page.uri")
         buildConfigField "String", "NATIONS", CONFIG("nations")
@@ -33,6 +31,12 @@ android {
         buildConfigField "String", "NETSYNC_FLAG", CONFIG("netsync.flag")
         buildConfigField "String", "NETSYNC_SEED", CONFIG("netsync.seed")
         buildConfigField "String", "NETSYNC_SEED_VALUE", CONFIG("netsync.seed.value")
+
+        //overrides Testrunner to setup dagger
+        testInstrumentationRunner "com.noisyninja.androidlistpoc.CustomTestRunner"
+        //enables vector drawables
+        vectorDrawables.useSupportLibrary = true
+
     }
 
     buildTypes {

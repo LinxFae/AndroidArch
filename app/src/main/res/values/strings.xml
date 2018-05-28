@@ -20,6 +20,7 @@
     <string name="title_activity_detail">DetailActivity</string>
     <string name="out_of_scope">but detail page was not required</string>
     <string name="reverse">List reversed!</string>
+    <string name="filter">Filtered by %1$s</string>
     <string name="phone">Phone: </string>
     <string name="dob">DOB: </string>
     <string name="nationality">Nationality: </string>
