@@ -24,5 +24,7 @@
     <string name="phone">Phone: </string>
     <string name="dob">DOB: </string>
     <string name="nationality">Nationality: </string>
+    <string name="id">Id: </string>
+    <string name="location">Location: </string>
     <string name="unknownVMClass">Unknown View Model Class</string>
 </resources>

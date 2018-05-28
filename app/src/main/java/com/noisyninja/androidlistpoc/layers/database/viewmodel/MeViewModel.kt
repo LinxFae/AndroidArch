@@ -3,7 +3,6 @@ package com.noisyninja.androidlistpoc.layers.database.viewmodel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModel
 import android.content.res.Resources
-import com.noisyninja.androidlistpoc.BuildConfig.NETSYNC_SEED_VALUE
 import com.noisyninja.androidlistpoc.BuildConfig.RESULT_COUNT
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.layers.UtilModule
@@ -37,7 +36,11 @@ open class MeViewModel @Inject constructor(val dataBaseModule: DataBaseModule,
         meLiveData = dataBaseModule.all
     }
 
-    fun getMe(): LiveData<List<Me>> {
+    fun getMe(userId: String): LiveData<Me> {
+        return dataBaseModule.mDataBase.databaseDao().findById(userId)
+    }
+
+    fun getMeList(): LiveData<List<Me>> {
 
         if (meLiveData.value == null || meLiveData.value!!.isEmpty() || meLiveData.value!!.size < 2) {
             utilModule.logI("getMe network")

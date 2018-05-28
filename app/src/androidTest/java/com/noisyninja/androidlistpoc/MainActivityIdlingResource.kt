@@ -8,12 +8,12 @@ import android.support.v7.widget.RecyclerView
  * Created by sudiptadutta on 20/05/18.
  */
 
-class NinjaIdlingResource(private val recyclerView: RecyclerView, private val tag: String) : IdlingResource {
+class MainActivityIdlingResource(private val recyclerView: RecyclerView, private val tag: String) : IdlingResource {
 
     private lateinit var mCallback: IdlingResource.ResourceCallback
 
     override fun getName(): String {
-        return NinjaIdlingResource::class.java.name + ":" + tag
+        return MainActivityIdlingResource::class.java.name + ":" + tag
     }
 
     override fun isIdleNow(): Boolean {
@@ -23,7 +23,7 @@ class NinjaIdlingResource(private val recyclerView: RecyclerView, private val ta
         }
         return idle
     }
-    
+
     override fun registerIdleTransitionCallback(callback: IdlingResource.ResourceCallback) {
         this.mCallback = callback
     }

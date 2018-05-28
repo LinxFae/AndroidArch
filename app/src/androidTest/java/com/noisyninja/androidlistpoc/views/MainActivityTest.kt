@@ -10,8 +10,9 @@ import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.RecyclerViewActions
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
+import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView
-import com.noisyninja.androidlistpoc.NinjaIdlingResource
+import com.noisyninja.androidlistpoc.MainActivityIdlingResource
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.TestApplication
 import junit.framework.Assert
@@ -20,12 +21,13 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 
 /**
  * Created by sudiptadutta on 18/05/18.
  */
 
-//@RunWith(AndroidJUnit4::class)
+@RunWith(AndroidJUnit4::class)
 class MainActivityTest : BaseTest() {
 
     @Rule
@@ -35,7 +37,7 @@ class MainActivityTest : BaseTest() {
     lateinit var app: TestApplication
     lateinit var mainActivity: MainActivity
     lateinit var mainPresenter: MainPresenter
-    lateinit var idlingResource: NinjaIdlingResource
+    lateinit var idlingResource: MainActivityIdlingResource
 
     @Before
     fun setup() {
@@ -44,7 +46,7 @@ class MainActivityTest : BaseTest() {
         mainActivity = mActivityTestRule.activity
         mainPresenter = mainActivity.mIMainPresenter as MainPresenter
 
-        idlingResource = NinjaIdlingResource(mActivityTestRule.activity.recyclerList, mActivityTestRule.activity.javaClass.simpleName)
+        idlingResource = MainActivityIdlingResource(mActivityTestRule.activity.recyclerList, mActivityTestRule.activity.javaClass.simpleName)
         IdlingRegistry.getInstance().register(idlingResource)
         //mActivityTestRule.launchActivity(null)
     }
@@ -72,7 +74,7 @@ class MainActivityTest : BaseTest() {
      */
     @Test
     fun checkListCountTest() {
-        sleepShort()
+        sleepMedium()
         onView(withId(R.id.recyclerList)).check(matches(isDisplayed()))
         Assert.assertEquals(mainActivity.recyclerList.adapter.itemCount, 100)
     }
@@ -82,7 +84,7 @@ class MainActivityTest : BaseTest() {
      */
     @Test
     fun sortButtonTest() {
-        sleepShort()
+        sleepMedium()
         onView(withId(R.id.fab)).check(matches(isDisplayed())).check(matches(isClickable())).perform(click())
     }
 }

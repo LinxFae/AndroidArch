@@ -27,7 +27,7 @@ abstract class BaseRepository : Base() {
     protected lateinit var mIDatabase: IDatabase
 
     fun setupServer(url: String) {
-
+        mMockWebServer = MockWebServer()
         mSubscriber = TestObserver()
 
         val interceptor = HttpLoggingInterceptor()

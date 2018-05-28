@@ -10,7 +10,7 @@ import android.support.test.runner.AndroidJUnit4
 import android.view.View
 import android.view.ViewGroup
 import com.codewaves.stickyheadergrid.StickyHeaderGridAdapter
-import com.noisyninja.androidlistpoc.NinjaIdlingResource
+import com.noisyninja.androidlistpoc.MainActivityIdlingResource
 import com.noisyninja.androidlistpoc.R
 import kotlinx.android.synthetic.main.content_main.*
 import org.hamcrest.Description
@@ -33,12 +33,12 @@ class MainActivityNavigationTest : BaseTest() {
     @Rule
     @JvmField
     var mActivityTestRule = IntentsTestRule(MainActivity::class.java)
-    lateinit var idlingResource: NinjaIdlingResource
+    lateinit var idlingResource: MainActivityIdlingResource
 
     @Before
     fun setup() {
 
-        idlingResource = NinjaIdlingResource(mActivityTestRule.activity.recyclerList, mActivityTestRule.activity.javaClass.simpleName)
+        idlingResource = MainActivityIdlingResource(mActivityTestRule.activity.recyclerList, mActivityTestRule.activity.javaClass.simpleName)
         IdlingRegistry.getInstance().register(idlingResource)
         //mActivityTestRule.launchActivity(null)
     }

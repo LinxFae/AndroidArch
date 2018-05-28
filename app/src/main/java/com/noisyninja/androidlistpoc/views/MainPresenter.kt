@@ -38,7 +38,7 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
     var meViewModel: MeViewModel
 
     init {
-        ninjaApp.ninjaComponent.inject(this)
+        ninjaApp.ninjaComponent.injectMain(this)
         meViewModel = ViewModelProviders.of(iMainActivity as AppCompatActivity, vmf).get(MeViewModel::class.java)
     }
 
@@ -46,8 +46,7 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
      * fetches the list of users from viewmodel and toggles ALL/MALE/FEMALE gender
      */
     override fun getListGender(): String {
-        meViewModel.getMe()
-        Transformations.switchMap(meViewModel.getMe()) { meList ->
+        Transformations.switchMap(meViewModel.getMeList()) { meList ->
             gender = gender.next()
             val newVal = MutableLiveData<List<Me>>()
             newVal.value = meList.filter { it ->
@@ -71,8 +70,7 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
      * fetches the list of users from viewmodel and toggles ALL/MALE/FEMALE gender
      */
     override fun getListNation(): String {
-        meViewModel.getMe()
-        Transformations.switchMap(meViewModel.getMe()) { meList ->
+        Transformations.switchMap(meViewModel.getMeList()) { meList ->
             nation = nation.next()
             val newVal = MutableLiveData<List<Me>>()
             newVal.value = meList.filter { it ->
@@ -98,7 +96,7 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
      * fetches the list of users from viewmodel which also acts as the database/network repository
      */
     override fun getList() {
-        meViewModel.getMe().observe(iMainActivity as AppCompatActivity, object : Observer<List<Me>> {
+        meViewModel.getMeList().observe(iMainActivity as AppCompatActivity, object : Observer<List<Me>> {
             override fun onChanged(@Nullable result: List<Me>?) {
                 //meViewModel.getMe().removeObserver(this)//to not update
                 handleResponse(result)
@@ -111,7 +109,7 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
      */
     override fun showDetail(me: Me) {
         val intent = Intent(ninjaApp, DetailActivity::class.java)
-        intent.putExtra(util.getStringRes(R.string.user_id_key), me.name.first)
+        intent.putExtra(util.getStringRes(R.string.user_id_key), util.toJson(me))
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         ninjaApp.startActivity(intent)
     }

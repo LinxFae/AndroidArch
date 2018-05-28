@@ -33,7 +33,6 @@ class MainAdapter(private val mResultsList: ArrayList<Me>, private val mIMainPre
         viewHolder.bind(me, mIMainPresenter)
     }
 
-
     inner class MeViewHolder(private val mListMainBinding: ListMainBinding) : RecyclerView.ViewHolder(mListMainBinding.root) {
         fun bind(@NonNull me: Me, @NonNull mainPresenter: IMainPresenter) {
             mListMainBinding.me = me

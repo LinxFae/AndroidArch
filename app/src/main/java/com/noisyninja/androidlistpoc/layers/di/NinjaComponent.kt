@@ -9,6 +9,7 @@ import com.noisyninja.androidlistpoc.layers.UtilModule
 import com.noisyninja.androidlistpoc.layers.database.DataBaseModule
 import com.noisyninja.androidlistpoc.layers.database.viewmodel.ViewModelFactory
 import com.noisyninja.androidlistpoc.layers.network.NetworkModule
+import com.noisyninja.androidlistpoc.views.DetailPresenter
 import com.noisyninja.androidlistpoc.views.MainPresenter
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
@@ -22,7 +23,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(AndroidSupportInjectionModule::class, SystemModule::class, RepositoryModule::class))
 interface NinjaComponent {
-    fun inject(mainPresenter: MainPresenter)
+    fun injectMain(mainPresenter: MainPresenter)
+    fun injectDetail(detailPresenter: DetailPresenter)
     fun app(): NinjaApp
     fun refWatcher(): RefWatcherModule
     fun appContext(): Context
