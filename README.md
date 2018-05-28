@@ -33,3 +33,6 @@ coded in a mixture of kotlin and Java uses android architecture components like
 - CodeBeat
 - Codacy
 - Codecov
+
+### Architecture
+![Alt text](/doc/arch.png?raw=true "Android architecture diagram")
