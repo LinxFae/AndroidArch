@@ -66,17 +66,17 @@ class NetworkModuleTest : BaseRepository() {
         meResponse.subscribe(mSubscriber)
         mSubscriber.assertNoErrors()
         mSubscriber.assertValue({ it ->
-            it.people.size == 100
+            it.people?.size == 100
         })
         mSubscriber.assertValue({ it ->
             it.info != null
-            it.people.get(0).name != null
-            it.people.get(0).name.first != null
-            it.people.get(0).name.title != null
-            it.people.get(0).name.last != null
-            it.people.get(0).picture.large != null
-            it.people.get(0).picture.medium != null
-            it.people[0].picture.thumbnail != null
+            it.people?.get(0)?.name != null
+            it.people?.get(0)?.name?.first != null
+            it.people?.get(0)?.name?.title != null
+            it.people?.get(0)?.name?.last != null
+            it.people?.get(0)?.picture?.large != null
+            it.people?.get(0)?.picture?.medium != null
+            it.people!![0].picture?.thumbnail != null
         })
     }
 

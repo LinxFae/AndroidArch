@@ -3,16 +3,10 @@ package com.noisyninja.androidlistpoc.modules
 import android.support.test.runner.AndroidJUnit4
 import com.noisyninja.androidlistpoc.BuildConfig
 import com.noisyninja.androidlistpoc.BuildConfig.RESULT_COUNT
-import com.noisyninja.androidlistpoc.layers.network.NetworkModule
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Created by sudiptadutta on 23/05/18.
@@ -22,12 +16,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NetworkModuleTest : BaseRepository() {
 
     @Before
-    fun setup(){
+    fun setup() {
         setupEnvironment()
         setupLoopers()
     }
+
     @After
-    fun teardown(){
+    fun teardown() {
         tearDownLoopers()
     }
 
@@ -36,23 +31,24 @@ class NetworkModuleTest : BaseRepository() {
         val url = BuildConfig.BASE_URL
         setupServer(url)
 
-        val networkObservable =
-                mNetworkModule.getPeople(RESULT_COUNT.toInt())
-
+        val networkObservable = mNetworkModule.getPeople(RESULT_COUNT.toInt())
         networkObservable.subscribe(mSubscriber)
+
         mSubscriber.assertNoErrors()
+
         mSubscriber.assertValue({ it ->
-            it.people.size == 100
+            it.people?.size == 100
         })
+
         mSubscriber.assertValue({ it ->
             it.info != null
-            it.people.get(0).name != null
-            it.people.get(0).name.first != null
-            it.people.get(0).name.title != null
-            it.people.get(0).name.last != null
-            it.people.get(0).picture.large != null
-            it.people.get(0).picture.medium != null
-            it.people[0].picture.thumbnail != null
+            it.people?.get(0)?.name != null
+            it.people?.get(0)?.name?.first != null
+            it.people?.get(0)?.name?.title != null
+            it.people?.get(0)?.name?.last != null
+            it.people?.get(0)?.picture?.large != null
+            it.people?.get(0)?.picture?.medium != null
+            it.people!![0].picture?.thumbnail != null
         })
     }
 

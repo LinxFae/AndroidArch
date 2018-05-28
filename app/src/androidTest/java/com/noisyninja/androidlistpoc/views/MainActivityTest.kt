@@ -82,10 +82,19 @@ class MainActivityTest : BaseTest() {
     }
 
     /**
-     * test if sort button is displayed and clickable, then click
+     * test if gender sort button is displayed and clickable, then click
      */
     @Test
-    fun sortButtonTest() {
+    fun sortButtonGenderTest() {
+        sleepMedium()
+        onView(withId(R.id.fab2)).check(matches(isDisplayed())).check(matches(isClickable())).perform(click())
+    }
+
+    /**
+     * test if nationality sort button is displayed and clickable, then click
+     */
+    @Test
+    fun sortButtonNationalityTest() {
         sleepMedium()
         onView(withId(R.id.fab)).check(matches(isDisplayed())).check(matches(isClickable())).perform(click())
     }
