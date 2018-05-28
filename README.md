@@ -14,9 +14,6 @@
 A proof of concept for google's architecture components which uses REST api from randomuser.me/
 to fetch users and display in a master detail view
 
-### Architecture
-![Alt text](/doc/arch.png?raw=true "Android architecture diagram")
-
 coded in a mixture of kotlin and Java uses android architecture components like
 - Uses MVVM architecture with data binding
 - LiveData for observable data source,
@@ -36,3 +33,6 @@ coded in a mixture of kotlin and Java uses android architecture components like
 - CodeBeat
 - Codacy
 - Codecov
+
+### Architecture
+![Alt text](/doc/arch.png?raw=true "Android architecture diagram")
