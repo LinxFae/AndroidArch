@@ -3,25 +3,20 @@ package com.noisyninja.androidlistpoc.views
 import android.content.Context
 import android.content.Intent
 import android.support.test.InstrumentationRegistry
-import android.support.test.espresso.Espresso
 import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.action.ViewActions
-import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers
-import android.support.test.espresso.matcher.ViewMatchers.isClickable
 import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.TestApplication
-import junit.framework.Assert
+import com.noisyninja.androidlistpoc.views.detail.DetailActivity
+import com.noisyninja.androidlistpoc.views.detail.DetailPresenter
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
 
 /**
  * Created by sudiptadutta on 19/05/18.

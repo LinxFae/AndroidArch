@@ -1,4 +1,4 @@
-package com.noisyninja.androidlistpoc.views
+package com.noisyninja.androidlistpoc.views.main
 
 import com.noisyninja.androidlistpoc.model.Me
 

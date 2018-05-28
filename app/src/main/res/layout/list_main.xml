@@ -8,7 +8,7 @@
 
         <variable
             name="mainPresenter"
-            type="com.noisyninja.androidlistpoc.views.IMainPresenter" />
+            type="com.noisyninja.androidlistpoc.views.main.IMainPresenter" />
 
         <variable
             name="me"

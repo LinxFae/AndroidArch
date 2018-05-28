@@ -1,4 +1,4 @@
-package com.noisyninja.androidlistpoc.views
+package com.noisyninja.androidlistpoc.views.main
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar

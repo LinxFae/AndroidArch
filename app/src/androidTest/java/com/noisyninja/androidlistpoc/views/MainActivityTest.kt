@@ -15,6 +15,8 @@ import android.support.v7.widget.RecyclerView
 import com.noisyninja.androidlistpoc.MainActivityIdlingResource
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.TestApplication
+import com.noisyninja.androidlistpoc.views.main.MainActivity
+import com.noisyninja.androidlistpoc.views.main.MainPresenter
 import junit.framework.Assert
 import kotlinx.android.synthetic.main.content_main.*
 import org.junit.After

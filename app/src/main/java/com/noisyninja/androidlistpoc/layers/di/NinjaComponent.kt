@@ -9,8 +9,8 @@ import com.noisyninja.androidlistpoc.layers.UtilModule
 import com.noisyninja.androidlistpoc.layers.database.DataBaseModule
 import com.noisyninja.androidlistpoc.layers.database.viewmodel.ViewModelFactory
 import com.noisyninja.androidlistpoc.layers.network.NetworkModule
-import com.noisyninja.androidlistpoc.views.DetailPresenter
-import com.noisyninja.androidlistpoc.views.MainPresenter
+import com.noisyninja.androidlistpoc.views.detail.DetailPresenter
+import com.noisyninja.androidlistpoc.views.main.MainPresenter
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton

@@ -1,4 +1,4 @@
-package com.noisyninja.androidlistpoc.views
+package com.noisyninja.androidlistpoc.views.detail
 
 /**
  * presenter interface

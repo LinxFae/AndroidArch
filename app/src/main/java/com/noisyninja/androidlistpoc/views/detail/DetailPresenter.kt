@@ -1,13 +1,8 @@
-package com.noisyninja.androidlistpoc.views
+package com.noisyninja.androidlistpoc.views.detail
 
-import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.AppCompatActivity
 import com.noisyninja.androidlistpoc.NinjaApp
 import com.noisyninja.androidlistpoc.databinding.ActivityDetailBinding
-import com.noisyninja.androidlistpoc.databinding.ContentDetailBinding
 import com.noisyninja.androidlistpoc.layers.UtilModule
-import com.noisyninja.androidlistpoc.layers.database.viewmodel.MeViewModel
-import com.noisyninja.androidlistpoc.layers.database.viewmodel.ViewModelFactory
 import com.noisyninja.androidlistpoc.model.Me
 import javax.inject.Inject
 

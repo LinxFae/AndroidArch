@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.databinding.ListMainBinding
 import com.noisyninja.androidlistpoc.model.Me
-import com.noisyninja.androidlistpoc.views.IMainPresenter
+import com.noisyninja.androidlistpoc.views.main.IMainPresenter
 
 
 /**

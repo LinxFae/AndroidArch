@@ -1,4 +1,4 @@
-package com.noisyninja.androidlistpoc.views
+package com.noisyninja.androidlistpoc.views.main
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Observer
@@ -15,6 +15,7 @@ import com.noisyninja.androidlistpoc.layers.database.viewmodel.ViewModelFactory
 import com.noisyninja.androidlistpoc.model.Gender
 import com.noisyninja.androidlistpoc.model.Me
 import com.noisyninja.androidlistpoc.model.Nation
+import com.noisyninja.androidlistpoc.views.detail.DetailActivity
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList

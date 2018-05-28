@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import com.codewaves.stickyheadergrid.StickyHeaderGridAdapter
 import com.noisyninja.androidlistpoc.MainActivityIdlingResource
 import com.noisyninja.androidlistpoc.R
+import com.noisyninja.androidlistpoc.views.main.MainActivity
 import kotlinx.android.synthetic.main.content_main.*
 import org.hamcrest.Description
 import org.hamcrest.Matcher

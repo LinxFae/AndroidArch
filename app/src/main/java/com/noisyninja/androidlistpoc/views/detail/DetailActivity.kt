@@ -1,4 +1,4 @@
-package com.noisyninja.androidlistpoc.views
+package com.noisyninja.androidlistpoc.views.detail
 
 
 import android.databinding.DataBindingUtil
@@ -7,8 +7,6 @@ import android.support.v7.app.AppCompatActivity
 import com.noisyninja.androidlistpoc.NinjaApp
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.databinding.ActivityDetailBinding
-import com.noisyninja.androidlistpoc.databinding.ContentDetailBinding
-import kotlinx.android.synthetic.main.activity_detail.*
 
 
 open class DetailActivity : AppCompatActivity() {
