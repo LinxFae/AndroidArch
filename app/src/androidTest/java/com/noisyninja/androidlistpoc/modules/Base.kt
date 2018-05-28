@@ -50,8 +50,6 @@ open class Base {
     protected fun setupLoopers() {
         //to make sure subscribeOn and observeOn run on same thread
         //async call becomes synchronous, thus waits for response
-        RxAndroidPlugins.reset()
-        RxJavaPlugins.reset()
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
         RxJavaPlugins.setIoSchedulerHandler { scheduler -> Schedulers.trampoline() }
     }
