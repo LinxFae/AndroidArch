@@ -59,7 +59,6 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
             }
             newVal
         }.observe(activity, Observer<List<Me>> { result ->
-            //meViewModel.getMe().removeObserver(this)//to not update
             handleResponse(result)
         })
         return gender.toString()
@@ -83,7 +82,6 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
             }
             newVal
         }.observe(activity, Observer<List<Me>> { result ->
-            //meViewModel.getMe().removeObserver(this)//to not update
             handleResponse(result)
         })
         return nation.toString()
@@ -94,7 +92,6 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
      */
     override fun getList() {
         meViewModel.getMeList().observe(activity, Observer<List<Me>> { result ->
-            //meViewModel.getMe().removeObserver(this)//to not update
             handleResponse(result)
         })
     }
