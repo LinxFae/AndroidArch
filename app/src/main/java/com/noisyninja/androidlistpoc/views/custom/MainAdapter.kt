@@ -18,8 +18,8 @@ import com.noisyninja.androidlistpoc.views.main.IMainPresenter
 
 class MainAdapter(private val mResultsList: ArrayList<Me>, private val mIMainPresenter: IMainPresenter) : RecyclerView.Adapter<MainAdapter.MeViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MeViewHolder {
-        val inflater = LayoutInflater.from(parent?.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MeViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<ListMainBinding>(inflater, R.layout.list_main, parent, false)
         return MeViewHolder(binding)
     }

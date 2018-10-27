@@ -32,21 +32,4 @@ open class AppExecutors(private val diskIO: Executor, private val networkIO: Exe
     fun networkIO(): Executor {
         return networkIO
     }
-
-    /*// For Singleton instantiation
-    companion object {
-
-    private val LOCK = Any()
-    private var sInstance: AppExecutors? = null
-        get() {
-            if (sInstance == null) {
-                synchronized(LOCK) {
-                    sInstance = AppExecutors(Executors.newSingleThreadExecutor(),
-                            Executors.newFixedThreadPool(3),
-                            MainThreadExecutor())
-                }
-            }
-            return sInstance
-        }
-    }*/
 }

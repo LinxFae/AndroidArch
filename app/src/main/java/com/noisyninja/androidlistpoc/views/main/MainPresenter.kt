@@ -5,8 +5,8 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
-import android.support.annotation.Nullable
-import android.support.v7.app.AppCompatActivity
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import com.noisyninja.androidlistpoc.NinjaApp
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.layers.UtilModule
@@ -16,9 +16,7 @@ import com.noisyninja.androidlistpoc.model.Gender
 import com.noisyninja.androidlistpoc.model.Me
 import com.noisyninja.androidlistpoc.model.Nation
 import com.noisyninja.androidlistpoc.views.detail.DetailActivity
-import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 
 /**
@@ -37,10 +35,12 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
     var nation: Nation = Nation.ALL
 
     var meViewModel: MeViewModel
+    var activity: FragmentActivity
 
     init {
         ninjaApp.ninjaComponent.injectMain(this)
-        meViewModel = ViewModelProviders.of(iMainActivity as AppCompatActivity, vmf).get(MeViewModel::class.java)
+        activity = (iMainActivity as Fragment).activity!!
+        meViewModel = ViewModelProviders.of(activity, vmf).get(MeViewModel::class.java)
     }
 
     /**
@@ -58,11 +58,9 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
                 }
             }
             newVal
-        }.observe(iMainActivity as AppCompatActivity, object : Observer<List<Me>> {
-            override fun onChanged(@Nullable result: List<Me>?) {
-                //meViewModel.getMe().removeObserver(this)//to not update
-                handleResponse(result)
-            }
+        }.observe(activity, Observer<List<Me>> { result ->
+            //meViewModel.getMe().removeObserver(this)//to not update
+            handleResponse(result)
         })
         return gender.toString()
     }
@@ -84,11 +82,9 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
                 }
             }
             newVal
-        }.observe(iMainActivity as AppCompatActivity, object : Observer<List<Me>> {
-            override fun onChanged(@Nullable result: List<Me>?) {
-                //meViewModel.getMe().removeObserver(this)//to not update
-                handleResponse(result)
-            }
+        }.observe(activity, Observer<List<Me>> { result ->
+            //meViewModel.getMe().removeObserver(this)//to not update
+            handleResponse(result)
         })
         return nation.toString()
     }
@@ -97,11 +93,9 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
      * fetches the list of users from viewmodel which also acts as the database/network repository
      */
     override fun getList() {
-        meViewModel.getMeList().observe(iMainActivity as AppCompatActivity, object : Observer<List<Me>> {
-            override fun onChanged(@Nullable result: List<Me>?) {
-                //meViewModel.getMe().removeObserver(this)//to not update
-                handleResponse(result)
-            }
+        meViewModel.getMeList().observe(activity, Observer<List<Me>> { result ->
+            //meViewModel.getMe().removeObserver(this)//to not update
+            handleResponse(result)
         })
     }
 
@@ -119,7 +113,7 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
      * reverses list order
      */
     override fun reverseList(arrayList: ArrayList<Me>): ArrayList<Me> {
-        Collections.reverse(arrayList)
+        arrayList.reverse()
         return ArrayList(arrayList)
     }
 

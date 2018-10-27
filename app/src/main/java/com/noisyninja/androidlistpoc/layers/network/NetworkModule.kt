@@ -17,7 +17,7 @@ import javax.inject.Inject
 open class NetworkModule @Inject constructor(private val retrofit: Retrofit) {
 
     fun getPeople(count: Int): Observable<MeResponse> {
-        return getCustomerObservable(count)//.subscribeWith(getObserver(iCallback))
+        return getCustomerObservable(count)
     }
 
     private fun getCustomerObservable(count: Int): Observable<MeResponse> {
@@ -26,9 +26,4 @@ open class NetworkModule @Inject constructor(private val retrofit: Retrofit) {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }
-
-    /*
-    private fun <T> getObserver(iCallback: ICallback<*>): GenericObserver<T> {
-        return GenericObserver(iCallback)
-    }*/
 }

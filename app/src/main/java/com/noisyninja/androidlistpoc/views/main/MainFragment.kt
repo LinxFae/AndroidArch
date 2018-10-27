@@ -2,32 +2,65 @@ package com.noisyninja.androidlistpoc.views.main
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
+import android.support.v4.app.Fragment
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.LinearLayoutManager.VERTICAL
+import android.view.LayoutInflater
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.ViewGroup
 import com.noisyninja.androidlistpoc.NinjaApp
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.model.Me
 import com.noisyninja.androidlistpoc.views.custom.MainAdapter
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.fragment_main.*
 
 
-open class MainActivity : AppCompatActivity(), IMainActivity {
+class MainFragment : Fragment(), IMainActivity {
 
     private var mResultList: ArrayList<Me> = ArrayList()
     lateinit var mIMainPresenter: IMainPresenter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
-        mIMainPresenter = MainPresenter(this, application as NinjaApp)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        setHasOptionsMenu(true)
+        return inflater.inflate(R.layout.fragment_main, container, false)
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //setSupportActionBar(toolbar)
+        mIMainPresenter = MainPresenter(this, activity?.application as NinjaApp)
         setupList()
         mIMainPresenter.getList()
+/*
+
+        view.findViewById<Button>(R.id.navigate_dest_bt)?.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.flow_step_one, null)
+        )
+
+        val options = NavOptions.Builder()
+                .setEnterAnim(R.anim.slide_in_right)
+                .setExitAnim(R.anim.slide_out_left)
+                .setPopEnterAnim(R.anim.slide_in_left)
+                .setPopExitAnim(R.anim.slide_out_right)
+                .build()
+
+        view.findViewById<Button>(R.id.navigate_dest_bt)?.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.flow_step_one, null, options)
+        }
+*/
+
+        //TODO STEP 7 - Update the OnClickListener to navigate using an action
+//        view.findViewById<Button>(R.id.navigate_action_bt)?.setOnClickListener(
+//                Navigation.createNavigateOnClickListener(R.id.next_action, null)
+//        )
+
+        //TODO ENDSTEP 7
     }
 
     /**
@@ -35,10 +68,10 @@ open class MainActivity : AppCompatActivity(), IMainActivity {
      */
     private fun setupList() {
 
-        val mLayoutManager = LinearLayoutManager(this)
+        val mLayoutManager = LinearLayoutManager(context)
         recyclerList.layoutManager = mLayoutManager
         recyclerList.adapter = MainAdapter(mResultList, mIMainPresenter)
-        recyclerList.addItemDecoration(DividerItemDecoration(this, VERTICAL))
+        recyclerList.addItemDecoration(DividerItemDecoration(context, VERTICAL))
         refresh_layout.setOnRefreshListener {
             mIMainPresenter.getList()
         }
@@ -69,7 +102,7 @@ open class MainActivity : AppCompatActivity(), IMainActivity {
      * show an error message if loading fails
      */
     private fun handleShowError(isError: Boolean, t: Throwable?) {
-        runOnUiThread({
+        activity?.runOnUiThread {
             recyclerList.adapter = MainAdapter(mResultList, mIMainPresenter)
             recyclerList.adapter.notifyDataSetChanged()
             refresh_layout.isRefreshing = false
@@ -82,7 +115,7 @@ open class MainActivity : AppCompatActivity(), IMainActivity {
                 recyclerList.visibility = VISIBLE
                 recyclerContainer.visibility = GONE
             }
-        })
+        }
     }
 
 }
