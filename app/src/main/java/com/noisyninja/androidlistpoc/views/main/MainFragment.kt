@@ -103,8 +103,7 @@ class MainFragment : Fragment(), IMainActivity {
      */
     private fun handleShowError(isError: Boolean, t: Throwable?) {
         activity?.runOnUiThread {
-            recyclerList.adapter = MainAdapter(mResultList, mIMainPresenter)
-            recyclerList.adapter.notifyDataSetChanged()
+            recyclerList.adapter?.notifyDataSetChanged()
             refresh_layout.isRefreshing = false
 
             if (isError) {

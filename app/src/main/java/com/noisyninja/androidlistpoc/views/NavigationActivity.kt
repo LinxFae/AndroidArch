@@ -24,7 +24,6 @@ class NavActivity : AppCompatActivity() {
         val host: NavHostFragment = supportFragmentManager
                 .findFragmentById(R.id.navigation_graph) as NavHostFragment? ?: return
 
-
         // Set up Navigation
         val navController = host.navController
 

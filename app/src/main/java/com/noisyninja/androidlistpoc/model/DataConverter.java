@@ -25,6 +25,19 @@ public class DataConverter {
                 .into(view);
 
     }
+/*
+    @TypeConverter
+    public static ArrayList<Me> toMeList(String value) {
+        Type listType = new TypeToken<ArrayList<Me>>() {}.getType();
+        return new Gson().fromJson(value, listType);
+    }
+
+    @TypeConverter
+    public static String fromMeList(ArrayList<Me> list) {
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        return json;
+    }*/
 
     @TypeConverter
     public String fromName(Name name) {
@@ -93,5 +106,22 @@ public class DataConverter {
         }
         Gson gson = new Gson();
         return gson.fromJson(locationString, Location.class);
+    }
+
+    @TypeConverter
+    public String fromDob(Dob dob) {
+        if (dob == null) {
+            return (null);
+        }
+        return dob.toString();
+    }
+
+    @TypeConverter
+    public Dob toDob(String dobString) {
+        if (dobString == null) {
+            return (null);
+        }
+        Gson gson = new Gson();
+        return gson.fromJson(dobString, Dob.class);
     }
 }

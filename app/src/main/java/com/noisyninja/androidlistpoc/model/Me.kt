@@ -4,10 +4,6 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 import android.arch.persistence.room.TypeConverters
 
-import com.noisyninja.androidlistpoc.layers.Utils
-
-import okhttp3.internal.Util
-
 
 @Entity(tableName = "me")
 class Me(@field:PrimaryKey
@@ -23,8 +19,10 @@ class Me(@field:PrimaryKey
     @TypeConverters(DataConverter::class)
     var location: Location? = null
 
+    @TypeConverters(DataConverter::class)
+    var dob: Dob? = null
+
     var email: String? = null
-    var dob: String? = null
     var phone: String? = null
     var cell: String? = null
     var gender: String? = null
@@ -34,7 +32,6 @@ class Me(@field:PrimaryKey
         get() = gender == MALE
 
     companion object {
-
-        val MALE = "male"
+        const val MALE = "male"
     }
 }
