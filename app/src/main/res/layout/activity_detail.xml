@@ -15,98 +15,85 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="@dimen/text_margin"
-            android:background="@drawable/border">
+            android:onClick="@{(view) -> mainPresenter.showDetail(me)}"
+            android:padding="@dimen/text_margin">
 
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/border"
-                android:padding="@dimen/text_margin"
                 android:contentDescription="@string/customer_thumbnail"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@mipmap/ic_launcher"
                 app:thumbnail="@{me.picture.large}" />
 
-            <LinearLayout
-                android:id="@+id/container"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/image"
-                android:layout_toLeftOf="@+id/genderIcon"
-                android:layout_toStartOf="@+id/genderIcon"
-                android:gravity="left"
-                android:orientation="vertical">
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:padding="@dimen/text_margin"
+                android:text="@{me.name.first+` `+me.name.last}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size1"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/app_name" />
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/text_margin"
-                    android:text="@{me.name.first+` `+me.name.last}"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_size1"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:padding="@dimen/text_margin"
+                android:text="@{@string/phone +` `+me.cell}"
+                android:textColor="@color/green"
+                android:textSize="@dimen/text_size1"
+                android:textStyle="italic"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:text="@string/app_name" />
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/text_margin"
-                    android:text="@{@string/phone +` `+me.cell}"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/text_size1"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/text_margin"
-                    android:text="@{@string/nationality +` `+me.nat}"
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/text_size1"
-                    android:textStyle="italic" />
-
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/text_margin"
-                    android:text="@{@string/id +` `+me.id.name+`-`+me.id.value}"
-                    android:textSize="@dimen/text_size1"
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/text_margin"
-                    android:text="@{@string/location +` `+me.location.street+`-`+me.location.city+`-`+me.location.state+`-`+me.location.postcode}"
-                    android:textSize="@dimen/text_size1"
-                    android:textColor="@color/red"
-                    android:textStyle="normal" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:padding="@dimen/text_margin"
+                android:text="@{@string/nationality +` `+me.nat}"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/text_size1"
+                android:textStyle="italic"
+                app:layout_constraintStart_toEndOf="@+id/image"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                tools:text="@string/app_name" />
 
             <com.noisyninja.androidlistpoc.views.custom.IconTextView
                 android:id="@+id/genderIcon"
                 android:layout_width="@dimen/text_size2"
                 android:layout_height="@dimen/text_size2"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/border"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:text="@{me.isMale ?@string/male2:@string/female2}"
-                android:textColor="@{me.isMale ?@color/colorPrimary:@color/colorAccent}" />
+                android:textColor="@{me.isMale ?@color/colorPrimary:@color/colorAccent}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </RelativeLayout>
+        </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 </layout>
