@@ -1,7 +1,7 @@
 package com.noisyninja.androidlistpoc.model;
 
-import android.arch.persistence.room.TypeConverter;
-import android.databinding.BindingAdapter;
+import androidx.room.TypeConverter;
+import androidx.databinding.BindingAdapter;
 import android.widget.ImageView;
 
 import com.google.gson.Gson;

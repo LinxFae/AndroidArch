@@ -2,7 +2,7 @@ package com.noisyninja.androidlistpoc
 
 import android.content.Context
 import android.content.res.Resources
-import android.support.test.InstrumentationRegistry
+import androidx.test.InstrumentationRegistry
 import com.noisyninja.androidlistpoc.layers.AppExecutors
 import com.noisyninja.androidlistpoc.layers.RefWatcherModule
 import com.noisyninja.androidlistpoc.layers.UtilModule

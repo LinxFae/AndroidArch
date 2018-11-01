@@ -3,12 +3,13 @@ package com.noisyninja.androidlistpoc.layers
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.net.ConnectivityManager
-import android.support.annotation.StringRes
-import android.support.design.widget.Snackbar
+import androidx.annotation.StringRes
+import com.google.android.material.snackbar.Snackbar
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.google.android.material.R
 import com.google.gson.GsonBuilder
 import timber.log.Timber
 import java.lang.reflect.Type
@@ -47,7 +48,7 @@ constructor(private val mContext: Context) {
 
     fun showSnackBar(view: View, text: String) {
         val snackbar = Snackbar.make(view, text, Snackbar.LENGTH_SHORT)
-        val contentLay = snackbar.view.findViewById<View>(android.support.design.R.id.snackbar_text).parent as ViewGroup
+        val contentLay = snackbar.view.findViewById<View>(R.id.snackbar_text).parent as ViewGroup
         val item = ProgressBar(view.context)
         contentLay.addView(item)
         snackbar.show()

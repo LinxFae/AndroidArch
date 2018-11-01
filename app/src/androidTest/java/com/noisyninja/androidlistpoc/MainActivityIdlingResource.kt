@@ -1,7 +1,7 @@
 package com.noisyninja.androidlistpoc
 
-import android.support.test.espresso.IdlingResource
-import android.support.v7.widget.RecyclerView
+import androidx.test.espresso.IdlingResource
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Idling resource to deal with asynchronous calls and waiting

@@ -1,15 +1,17 @@
 package com.noisyninja.androidlistpoc.views.main
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.LinearLayoutManager.VERTICAL
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.noisyninja.androidlistpoc.NinjaApp
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.model.Me
@@ -72,6 +74,10 @@ class MainFragment : Fragment(), IMainActivity {
         recyclerList.addItemDecoration(DividerItemDecoration(context, VERTICAL))
         refresh_layout.setOnRefreshListener {
             mIMainPresenter.getList()
+        }
+
+        button.findViewById<Button>(R.id.button)?.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.next_action, null, null)
         }
 
 /*        fab.setOnClickListener { view ->

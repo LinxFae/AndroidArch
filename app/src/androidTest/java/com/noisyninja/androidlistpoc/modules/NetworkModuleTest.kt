@@ -1,6 +1,6 @@
 package com.noisyninja.androidlistpoc.modules
 
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.runner.AndroidJUnit4
 import com.noisyninja.androidlistpoc.BuildConfig
 import com.noisyninja.androidlistpoc.BuildConfig.RESULT_COUNT
 import org.junit.After

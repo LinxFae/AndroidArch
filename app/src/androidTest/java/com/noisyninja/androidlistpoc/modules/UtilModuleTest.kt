@@ -1,6 +1,6 @@
 package com.noisyninja.androidlistpoc.modules
 
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.runner.AndroidJUnit4
 import com.noisyninja.androidlistpoc.R
 import org.junit.After
 import org.junit.Assert

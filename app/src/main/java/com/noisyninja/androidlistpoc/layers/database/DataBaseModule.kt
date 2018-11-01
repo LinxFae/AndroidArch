@@ -1,8 +1,8 @@
 package com.noisyninja.androidlistpoc.layers.database
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Transformations
-import android.arch.persistence.room.Room
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
+import androidx.room.Room
 import android.content.Context
 import com.noisyninja.androidlistpoc.BuildConfig
 import com.noisyninja.androidlistpoc.layers.UtilModule

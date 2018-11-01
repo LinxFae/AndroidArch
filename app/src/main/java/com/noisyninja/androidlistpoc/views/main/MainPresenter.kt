@@ -1,14 +1,14 @@
 package com.noisyninja.androidlistpoc.views.main
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.Transformations
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
 import android.view.View
-import androidx.navigation.Navigation
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation.findNavController
 import com.noisyninja.androidlistpoc.NinjaApp
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.layers.UtilModule
@@ -104,7 +104,7 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
         
         var bundle = Bundle()
         bundle.putString(util.getStringRes(R.string.user_id_key), util.toJson(me))
-        Navigation.findNavController(view).navigate(R.id.next_action, bundle, null)
+        findNavController(view).navigate(R.id.next_action, bundle, null)
         /*val intent = Intent(ninjaApp, DetailActivity::class.java)
         intent.putExtra(util.getStringRes(R.string.user_id_key), util.toJson(me))
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

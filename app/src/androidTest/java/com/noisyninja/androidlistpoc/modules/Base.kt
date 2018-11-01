@@ -1,7 +1,7 @@
 package com.noisyninja.androidlistpoc.modules
 
 import android.content.Context
-import android.support.test.InstrumentationRegistry
+import androidx.test.InstrumentationRegistry
 import com.noisyninja.androidlistpoc.TestApplication
 import com.noisyninja.androidlistpoc.layers.UtilModule
 import com.noisyninja.androidlistpoc.model.Me

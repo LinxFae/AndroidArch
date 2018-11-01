@@ -1,12 +1,12 @@
 package com.noisyninja.androidlistpoc.views
 
-import android.support.test.espresso.Espresso
-import android.support.test.espresso.IdlingRegistry
-import android.support.test.espresso.action.ViewActions
-import android.support.test.espresso.contrib.RecyclerViewActions
-import android.support.test.espresso.intent.rule.IntentsTestRule
-import android.support.test.espresso.matcher.ViewMatchers
-import android.support.test.runner.AndroidJUnit4
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.espresso.intent.rule.IntentsTestRule
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.runner.AndroidJUnit4
 import android.view.View
 import android.view.ViewGroup
 import com.codewaves.stickyheadergrid.StickyHeaderGridAdapter

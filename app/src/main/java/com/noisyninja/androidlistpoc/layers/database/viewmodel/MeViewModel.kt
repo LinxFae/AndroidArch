@@ -1,7 +1,7 @@
 package com.noisyninja.androidlistpoc.layers.database.viewmodel
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import android.content.res.Resources
 import com.noisyninja.androidlistpoc.BuildConfig.RESULT_COUNT
 import com.noisyninja.androidlistpoc.R

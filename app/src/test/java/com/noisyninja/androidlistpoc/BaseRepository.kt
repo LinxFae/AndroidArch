@@ -1,6 +1,6 @@
 package com.noisyninja.androidlistpoc
 
-import android.arch.persistence.room.Room
+import androidx.room.Room
 import com.noisyninja.androidlistpoc.layers.database.DatabaseDao
 import com.noisyninja.androidlistpoc.layers.database.IDatabase
 import com.noisyninja.androidlistpoc.model.MeResponse

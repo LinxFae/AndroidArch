@@ -1,8 +1,8 @@
 package com.noisyninja.androidlistpoc.modules
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
-import android.arch.persistence.room.Room
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.room.Room
 import com.noisyninja.androidlistpoc.layers.database.IDatabase
 import com.noisyninja.androidlistpoc.layers.network.NetworkModule
 import com.noisyninja.androidlistpoc.model.MeResponse

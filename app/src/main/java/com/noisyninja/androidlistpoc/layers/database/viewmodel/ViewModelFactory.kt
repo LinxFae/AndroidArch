@@ -1,7 +1,7 @@
 package com.noisyninja.androidlistpoc.layers.database.viewmodel
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import android.content.res.Resources
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.layers.UtilModule
