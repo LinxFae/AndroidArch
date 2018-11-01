@@ -14,7 +14,7 @@ import com.noisyninja.androidlistpoc.NinjaApp
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.model.Me
 import com.noisyninja.androidlistpoc.views.custom.MainAdapter
-import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.fragment_main.*
 
 
 class MainFragment : Fragment(), IMainActivity {
@@ -25,7 +25,7 @@ class MainFragment : Fragment(), IMainActivity {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.content_main, container, false)
+        return inflater.inflate(R.layout.fragment_main, container, false)
 
     }
 
