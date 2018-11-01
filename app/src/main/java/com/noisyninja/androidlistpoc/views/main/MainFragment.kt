@@ -6,9 +6,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
@@ -37,30 +35,6 @@ class MainFragment : Fragment(), IMainActivity {
         mIMainPresenter = MainPresenter(this, activity?.application as NinjaApp)
         setupList()
         mIMainPresenter.getList()
-/*
-
-        view.findViewById<Button>(R.id.navigate_dest_bt)?.setOnClickListener(
-                Navigation.createNavigateOnClickListener(R.id.flow_step_one, null)
-        )
-
-        val options = NavOptions.Builder()
-                .setEnterAnim(R.anim.slide_in_right)
-                .setExitAnim(R.anim.slide_out_left)
-                .setPopEnterAnim(R.anim.slide_in_left)
-                .setPopExitAnim(R.anim.slide_out_right)
-                .build()
-
-        view.findViewById<Button>(R.id.navigate_dest_bt)?.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.flow_step_one, null, options)
-        }
-*/
-
-        //TODO STEP 7 - Update the OnClickListener to navigate using an action
-//        view.findViewById<Button>(R.id.navigate_action_bt)?.setOnClickListener(
-//                Navigation.createNavigateOnClickListener(R.id.next_action, null)
-//        )
-
-        //TODO ENDSTEP 7
     }
 
     /**
@@ -74,10 +48,6 @@ class MainFragment : Fragment(), IMainActivity {
         recyclerList.addItemDecoration(DividerItemDecoration(context, VERTICAL))
         refresh_layout.setOnRefreshListener {
             mIMainPresenter.getList()
-        }
-
-        button.findViewById<Button>(R.id.button)?.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.next_action, null, null)
         }
 
 /*        fab.setOnClickListener { view ->

@@ -105,10 +105,6 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
         var bundle = Bundle()
         bundle.putString(util.getStringRes(R.string.user_id_key), util.toJson(me))
         findNavController(view).navigate(R.id.next_action, bundle, null)
-        /*val intent = Intent(ninjaApp, DetailActivity::class.java)
-        intent.putExtra(util.getStringRes(R.string.user_id_key), util.toJson(me))
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        ninjaApp.startActivity(intent)*/
     }
 
     /**
