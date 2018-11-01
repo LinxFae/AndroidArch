@@ -4,9 +4,11 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Intent
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
+import android.view.View
+import androidx.navigation.Navigation
 import com.noisyninja.androidlistpoc.NinjaApp
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.layers.UtilModule
@@ -15,7 +17,6 @@ import com.noisyninja.androidlistpoc.layers.database.viewmodel.ViewModelFactory
 import com.noisyninja.androidlistpoc.model.Gender
 import com.noisyninja.androidlistpoc.model.Me
 import com.noisyninja.androidlistpoc.model.Nation
-import com.noisyninja.androidlistpoc.views.detail.DetailActivity
 import javax.inject.Inject
 
 
@@ -99,11 +100,15 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
     /**
      * opens detail activity
      */
-    override fun showDetail(me: Me) {
-        val intent = Intent(ninjaApp, DetailActivity::class.java)
+    override fun showDetail(view: View, me: Me) {
+        
+        var bundle = Bundle()
+        bundle.putString(util.getStringRes(R.string.user_id_key), util.toJson(me))
+        Navigation.findNavController(view).navigate(R.id.next_action, bundle, null)
+        /*val intent = Intent(ninjaApp, DetailActivity::class.java)
         intent.putExtra(util.getStringRes(R.string.user_id_key), util.toJson(me))
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        ninjaApp.startActivity(intent)
+        ninjaApp.startActivity(intent)*/
     }
 
     /**

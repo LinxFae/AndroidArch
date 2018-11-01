@@ -1,7 +1,6 @@
 package com.noisyninja.androidlistpoc.views.main
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
@@ -16,7 +15,6 @@ import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.model.Me
 import com.noisyninja.androidlistpoc.views.custom.MainAdapter
 import kotlinx.android.synthetic.main.content_main.*
-import kotlinx.android.synthetic.main.fragment_main.*
 
 
 class MainFragment : Fragment(), IMainActivity {
@@ -27,7 +25,7 @@ class MainFragment : Fragment(), IMainActivity {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.content_main, container, false)
 
     }
 
@@ -76,7 +74,7 @@ class MainFragment : Fragment(), IMainActivity {
             mIMainPresenter.getList()
         }
 
-        fab.setOnClickListener { view ->
+/*        fab.setOnClickListener { view ->
             val nation = mIMainPresenter.getListNation()
             Snackbar.make(view, getString(R.string.filter, nation), Snackbar.LENGTH_LONG)
                     .show()
@@ -86,7 +84,7 @@ class MainFragment : Fragment(), IMainActivity {
             Snackbar.make(view, getString(R.string.filter, gender), Snackbar.LENGTH_LONG)
                     //.setAction("Action", null)
                     .show()
-        }
+        }*/
     }
 
     /**
@@ -108,13 +106,12 @@ class MainFragment : Fragment(), IMainActivity {
 
             if (isError) {
                 recyclerList.visibility = GONE
-                recyclerContainer.visibility = VISIBLE
-                recyclerText.text = t?.message
+                //recyclerContainer.visibility = VISIBLE
+                //recyclerText.text = t?.message
             } else {
                 recyclerList.visibility = VISIBLE
-                recyclerContainer.visibility = GONE
+                //recyclerContainer.visibility = GONE
             }
         }
     }
-
 }

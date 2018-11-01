@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import com.noisyninja.androidlistpoc.R
 
 /**
@@ -26,9 +27,13 @@ class NavActivity : AppCompatActivity() {
 
         // Set up Navigation
         val navController = host.navController
-
+        setupActionBarWithNavController(navController)
         setupBottomNavMenu(navController)
 
+    }
+
+    private fun setupActionBarWithNavController(navController: NavController) {
+        setupActionBarWithNavController(this, navController)
     }
 
     private fun setupBottomNavMenu(navController: NavController) {

@@ -1,7 +1,7 @@
 package com.noisyninja.androidlistpoc.views.detail
 
 import com.noisyninja.androidlistpoc.NinjaApp
-import com.noisyninja.androidlistpoc.databinding.ActivityDetailBinding
+import com.noisyninja.androidlistpoc.databinding.FragmentDetailBinding
 import com.noisyninja.androidlistpoc.layers.UtilModule
 import com.noisyninja.androidlistpoc.model.Me
 import javax.inject.Inject
@@ -12,7 +12,7 @@ import javax.inject.Inject
  * Created by sudiptadutta on 12/05/18.
  */
 
-class DetailPresenter internal constructor(ninjaApp: NinjaApp, val mActivityDetailBinding: ActivityDetailBinding) : IDetailPresenter {
+class DetailPresenter internal constructor(ninjaApp: NinjaApp, val mActivityDetailBinding: FragmentDetailBinding) : IDetailPresenter {
 
     @Inject
     lateinit var util: UtilModule
