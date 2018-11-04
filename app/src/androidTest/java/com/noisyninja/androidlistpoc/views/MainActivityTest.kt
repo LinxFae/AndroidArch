@@ -1,6 +1,7 @@
 package com.noisyninja.androidlistpoc.views
 
 import android.content.Context
+import androidx.recyclerview.widget.RecyclerView
 import androidx.test.InstrumentationRegistry
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
@@ -11,14 +12,11 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
-import androidx.recyclerview.widget.RecyclerView
 import com.noisyninja.androidlistpoc.MainActivityIdlingResource
 import com.noisyninja.androidlistpoc.R
 import com.noisyninja.androidlistpoc.TestApplication
-import com.noisyninja.androidlistpoc.views.main.MainActivity
 import com.noisyninja.androidlistpoc.views.main.MainPresenter
 import junit.framework.Assert
-import kotlinx.android.synthetic.main.content_main.*
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -34,10 +32,10 @@ class MainActivityTest : BaseTest() {
 
     @Rule
     @JvmField
-    var mActivityTestRule = ActivityTestRule<MainActivity>(MainActivity::class.java)
+    var mActivityTestRule = ActivityTestRule<NavActivity>(NavActivity::class.java)
     lateinit var context: Context
     lateinit var app: TestApplication
-    lateinit var mainActivity: MainActivity
+    lateinit var mainActivity: NavActivity
     lateinit var mainPresenter: MainPresenter
     lateinit var idlingResource: MainActivityIdlingResource
 

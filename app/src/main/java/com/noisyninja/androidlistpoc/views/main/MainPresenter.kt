@@ -25,7 +25,7 @@ import javax.inject.Inject
  * Created by sudiptadutta on 12/05/18.
  */
 
-class MainPresenter internal constructor(private val iMainActivity: IMainActivity, private val ninjaApp: NinjaApp) : IMainPresenter {
+class MainPresenter internal constructor(private val iMainFragment: IMainFragment, private val ninjaApp: NinjaApp) : IMainPresenter {
 
     @Inject
     lateinit var vmf: ViewModelFactory
@@ -40,7 +40,7 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
 
     init {
         ninjaApp.ninjaComponent.injectMain(this)
-        activity = (iMainActivity as Fragment).activity!!
+        activity = (iMainFragment as Fragment).activity!!
         meViewModel = ViewModelProviders.of(activity, vmf).get(MeViewModel::class.java)
     }
 
@@ -101,7 +101,6 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
      * opens detail activity
      */
     override fun showDetail(view: View, me: Me) {
-        
         var bundle = Bundle()
         bundle.putString(util.getStringRes(R.string.user_id_key), util.toJson(me))
         findNavController(view).navigate(R.id.next_action, bundle, null)
@@ -121,10 +120,10 @@ class MainPresenter internal constructor(private val iMainActivity: IMainActivit
     fun handleResponse(result: List<Me>?) {
         if (result == null) {
             util.logI("null response")
-            iMainActivity.setList(ArrayList())
+            iMainFragment.setList(ArrayList())
         } else {
             util.logI("got response")
-            iMainActivity.setList(ArrayList(result))
+            iMainFragment.setList(ArrayList(result))
         }
     }
 

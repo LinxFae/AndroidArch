@@ -17,7 +17,7 @@ import com.noisyninja.androidlistpoc.views.custom.MainAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
 
 
-class MainFragment : Fragment(), IMainActivity {
+class MainFragment : Fragment(), IMainFragment {
 
     private var mResultList: ArrayList<Me> = ArrayList()
     lateinit var mIMainPresenter: IMainPresenter

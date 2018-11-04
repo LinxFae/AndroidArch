@@ -1,5 +1,7 @@
 package com.noisyninja.androidlistpoc.views
 
+import android.view.View
+import android.view.ViewGroup
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions
@@ -7,13 +9,8 @@ import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.intent.rule.IntentsTestRule
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.runner.AndroidJUnit4
-import android.view.View
-import android.view.ViewGroup
-import com.codewaves.stickyheadergrid.StickyHeaderGridAdapter
 import com.noisyninja.androidlistpoc.MainActivityIdlingResource
 import com.noisyninja.androidlistpoc.R
-import com.noisyninja.androidlistpoc.views.main.MainActivity
-import kotlinx.android.synthetic.main.content_main.*
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers

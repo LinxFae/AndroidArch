@@ -36,11 +36,11 @@ class NetworkModuleTest : BaseRepository() {
 
         mSubscriber.assertNoErrors()
 
-        mSubscriber.assertValue({ it ->
+        mSubscriber.assertValue { it ->
             it.people?.size == 100
-        })
+        }
 
-        mSubscriber.assertValue({ it ->
+        mSubscriber.assertValue { it ->
             it.info != null
             it.people?.get(0)?.name != null
             it.people?.get(0)?.name?.first != null
@@ -49,7 +49,7 @@ class NetworkModuleTest : BaseRepository() {
             it.people?.get(0)?.picture?.large != null
             it.people?.get(0)?.picture?.medium != null
             it.people!![0].picture?.thumbnail != null
-        })
+        }
     }
 
     /**
@@ -65,7 +65,7 @@ class NetworkModuleTest : BaseRepository() {
                 mNetworkModule.getPeople(BuildConfig.RESULT_COUNT.toInt())
 
         networkObservable.subscribe(mSubscriber)
-        mSubscriber.assertError({ t: Throwable -> t.message!!.isNotEmpty() })
+        mSubscriber.assertError { t: Throwable -> t.message!!.isNotEmpty() }
 
     }
 }

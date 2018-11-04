@@ -1,7 +1,7 @@
 package com.noisyninja.androidlistpoc
 
-import androidx.test.espresso.IdlingResource
 import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.IdlingResource
 
 /**
  * Idling resource to deal with asynchronous calls and waiting
@@ -17,9 +17,13 @@ class MainActivityIdlingResource(private val recyclerView: RecyclerView, private
     }
 
     override fun isIdleNow(): Boolean {
-        val idle = recyclerView.adapter.itemCount > 1
-        if (idle) {
-            mCallback.onTransitionToIdle()
+        var idle = false
+        val adapter = recyclerView.adapter
+        adapter?.let {
+            idle = adapter.itemCount > 1
+            if (idle) {
+                mCallback.onTransitionToIdle()
+            }
         }
         return idle
     }
